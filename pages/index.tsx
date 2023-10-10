@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import axios from 'axios'
+import stackWrapper from '../helper/api'
 const Home = ({data}:{data:any}) => {
+  console.log(data)
   return (
     <div className={styles.container}>
       <Head>
@@ -12,11 +13,7 @@ const Home = ({data}:{data:any}) => {
       </Head>
 
       <main className={styles.main}>
-        {data?.map((item:any)=>{
-          return (
-            <h1 key={item.id}>{item.name}</h1>
-          )
-        })}
+      
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -65,7 +62,7 @@ const Home = ({data}:{data:any}) => {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <img src={data?.section_8_promotional?.hero_image?.url} alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
@@ -77,10 +74,10 @@ export default Home
 
 
 export const getServerSideProps = async (context:any) => {
-  const data= await axios.get('https://jsonplaceholder.typicode.com/users')
+  const data=  await stackWrapper.getHomePage('home_page', 'blt8b06eea0c35a7994')
   return {
    props: {
-     data:data.data,
+     data:data,
    },
  };
  }
