@@ -22,7 +22,7 @@ import Loader from '../components/loader/Loader';
 // import { Standard } from '../components/future-standard/standard';
 // import { HomeResource } from '../components/home/resources';
 // import { Header } from '../components/header/header';
-// import { Footer } from '../components/footer/footer';
+import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
 import { Header } from '../components/header/header';
 
@@ -49,10 +49,7 @@ export default function Home({data}:{data:any}) {
     xl: { rowGap: "128" },
     fallback: { rowGap: "64" },
   });
-  console.log('kddk',router.isFallback)
-  if (!router.isFallback) {
-    <h1>Data is loading</h1>;
-  }
+  
 
 
   return (
@@ -82,7 +79,7 @@ export default function Home({data}:{data:any}) {
           <Standard />
           <HomeResource /> */}
 
-          {/* <Footer /> */}
+          <Footer />
         </Stack>
       </> : <Loader height='100vh' width='100vw' />}
 
