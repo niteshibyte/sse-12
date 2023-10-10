@@ -11,20 +11,18 @@ import { SETHOMEDATA } from '../reducer/homeData';
 import { Banner } from '../components/banner/banner';
 import Head from 'next/head';
 import Loader from '../components/loader/Loader';
-// import { PartnerLogos } from '../components/customer-support/customer-logos';
-// import { SuccessDecisionMakers } from '../components/success-decision-makers/success-decision-makers';
-// import { Roadmap } from '../components/success-roadmap/roadmap';
-// import { Benefits } from '../components/benefits/benefits';
-// import { Results } from '../components/results/results';
-// import { Analytics } from '../components/voc-analytics/analytics';
-// import { BookDemo } from '../components/book-demo/book-demo';
-// import { StayWithUs } from '../components/stay-with-us/companies';
-// import { Standard } from '../components/future-standard/standard';
-// import { HomeResource } from '../components/home/resources';
-// import { Header } from '../components/header/header';
+import { PartnerLogos } from '../components/customer-support/customer-logos';
+import { SuccessDecisionMakers } from '../components/success-decision-makers/success-decision-makers';
+import { Roadmap } from '../components/success-roadmap/roadmap';
+import { Benefits } from '../components/benefits/benefits';
+import { Results } from '../components/results/results';
+import { Analytics } from '../components/voc-analytics/analytics';
+import { BookDemo } from '../components/book-demo/book-demo';
+import { StayWithUs } from '../components/stay-with-us/companies';
+import { Standard } from '../components/future-standard/standard';
+import { HomeResource } from '../components/home/resources';
 import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
-import { Header } from '../components/header/header';
 
 export default function Home({data}:{data:any}) {
   const dispatch=useDispatch()
@@ -68,7 +66,7 @@ export default function Home({data}:{data:any}) {
           </Head>
           <Header />
           <Banner  />
-          {/* <PartnerLogos />
+          <PartnerLogos />
           <SuccessDecisionMakers />
           <Roadmap />
           <Benefits />
@@ -77,7 +75,7 @@ export default function Home({data}:{data:any}) {
           <BookDemo />
           <StayWithUs />
           <Standard />
-          <HomeResource /> */}
+          <HomeResource />
 
           <Footer />
         </Stack>
