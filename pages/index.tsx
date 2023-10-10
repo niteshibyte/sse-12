@@ -1,8 +1,8 @@
 
 
-// import '@wonderflow/react-components/core.css';
-// import '@wonderflow/themes';
-// import "animate.css";
+import '@wonderflow/react-components/core.css';
+import '@wonderflow/themes';
+import "animate.css";
 import stackWrapper from '../helper/api'
 
 
