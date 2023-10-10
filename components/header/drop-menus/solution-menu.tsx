@@ -92,7 +92,7 @@ export const SolutionMenu = (props: any) => {
                                 <Carousel useArrowKeys={false} autoSwipe={1000} show={1} slide={1} transition={2}>
                                     {header?.solution_side_ss?.reference?.length > 0 && header?.solution_side_ss?.reference?.map((item: any, index: number) => {
                                         return (
-                                            <Stack key={index} as="div" className="mb-carosuel--item">
+                                            <Stack  as="div" className="mb-carosuel--item">
                                                 <Link href={changeUrl(router.query.lang,`/resources/success-story${item?.url}`) }>
                                                     <a>
                                                         <Stack as="div" className="stack--image">

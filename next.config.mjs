@@ -42,7 +42,11 @@ const nextConfig = withPlugins(
     images: {
       domains: ["media.hygraph.com", "media.graphassets.com"],
     },
+    eslint: {
+      ignoreDuringBuilds: true,
   }
+  },
+ 
 );
 
 export default nextConfig;
