@@ -1,0 +1,134 @@
+
+
+[[redirects]]
+  from = "/product"
+  to = "/product/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/product/*"
+  to = "/product/[title].html"
+  status = 200
+  force = false
+
+
+
+[[redirects]]
+  from = "/business-intelligence"
+  to = "/business-intelligence/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/business-intelligence/product-comparison/*"
+  to = "/business-intelligence/product-comparison/[title].html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/business-intelligence/voc-reports/*"
+  to = "/business-intelligence/voc-reports/[title].html"
+  status = 200
+  force = false
+
+ 
+[[redirects]]
+  from = "/industries"
+  to = "/industries/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/industries/*"
+  to = "/industries/[title].html"
+  status = 200
+  force = false
+
+
+[[redirects]]
+  from = "/departments"
+  to = "/departments/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/departments/*"
+  to = "/departments/[title].html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/resources/webinar"
+  to = "/resources/webinar/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/resources/webinar/*"
+  to = "/resources/webinar/[title].html"
+  status = 200
+  force = false
+
+
+[[redirects]]
+  from = "/resources/whitepaper"
+  to = "/resources/whitepaper/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/resources/whitepaper/*"
+  to = "/resources/whitepaper/[title].html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/resources/success-story"
+  to = "/resources/success-story/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/resources/success-story/*"
+  to = "/resources/success-story/[title].html"
+  status = 200
+  force = false
+
+
+[[redirects]]
+  from = "/resources/analyst-report"
+  to = "/resources/analyst-report/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/resources/analyst-report/*"
+  to = "/resources/analyst-report/[title].html"
+  status = 200
+  force = false
+
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/index.html"
+  status = 200
+  force = false
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/[title].html"
+  status = 200
+  force = false
+
+
+[[redirects]]
+  from = "/page1/*"
+  to = "/page1/[title].html"
+  status = 200
+  force = false
+
+ [[redirects]]
+  from = "/page2/*"
+  to = "/page2/[title].html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/*"
+  to = "/404/index.html"
+  status = 200
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
