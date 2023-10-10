@@ -1,0 +1,214 @@
+.header--bg{
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.mega--menu--open .header--bg{
+    background-color: #fff;
+}
+.site--header{
+    justify-content: space-between;
+}
+.site--logo{
+    max-width: 12rem;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+.site--menu{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+.site--menu li svg{
+    display: none;
+}
+.site--menu li a{
+    position: relative;
+    color: #fff;
+    z-index: 1;
+}
+.site--menu li.has--drop--menu > span > a{
+    padding-right: 1rem;
+}
+.site--menu li.has--drop--menu > span > a:after{
+    content: '';
+    right: 0;
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: solid #fff;
+    border-width: 0 0.125rem 0.125rem 0;
+    transform: rotate(45deg) translateY(-50%);
+    top: 42%;
+}
+.site--menu li.has--drop--menu.active--mega--menu > span > a:after{
+    transform: rotate(-135deg) translateY(-50%);
+    right: -0.3125rem;;
+}
+.site--menu button:after{
+    content: '';
+    right: 0.5rem;
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: solid #fff;
+    border-width: 0 0.125rem 0.125rem 0;
+    transform: rotate(45deg) translateY(-50%);
+    top: 50%;
+}
+.site--menu li a:focus{
+    outline: none;
+}
+.site--auth-menu{
+    max-width: 18rem;
+}
+.site--auth-menu a{
+    color: #fff;
+}
+.desktop--menu span:hover ul li a {
+    color: #000;
+}
+.site--menu .company-menu button::after {
+    display: none;
+}
+
+.drop--menu {
+    position: absolute;
+    background: #f2f2f2;
+    width: 10rem;
+    display: none;
+}
+/* .has--drop--menu {
+    position: relative;
+} */
+.drop--menu li span {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+.drop--menu li a{
+    color: rgb(69, 74, 84);
+}
+.has--drop--menu span:hover .drop--menu{
+    display: block;
+}
+.flagImage{
+    width: 1.75rem;
+}
+.flagImage img{
+    width: 100%;
+}
+.popover_PopUp__shQ_L{
+    inline-size: max-content;
+    right: 0 !important;
+    inset: inherit !important;
+    top: 4rem !important;
+    left: inherit !important;
+    right: -10rem !important;
+    bottom: inherit;
+    z-index: 9999;
+}
+/* .popover_PopUp__shQ_L{
+    top: 3.25rem !important;
+    right: -7rem !important;
+}
+.custom_dropdown button {
+    background: rgba(212,216,224,.4);
+    color: #000;
+} */
+ul.dropdown_content{
+    padding: 0;
+    min-width: 16rem;
+}
+.dropdown_content li > button > span {
+    padding: .75rem 1.5rem;
+}
+p.country_flag {
+    width: 1.5rem;
+}
+.dropdown_content li span .country__name span {
+    letter-spacing: 0.0625rem;
+    padding-left: 0;
+    color: #000;
+}
+.analyst-report-page .header--bg{
+    background-color: #101114;
+}
+
+@media screen and (max-width: 40rem){
+    .site--logo{
+        max-width: 10rem;
+    }
+}
+
+.mega--menu--open .header--bg{
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+.white--theme .header--bg{
+    /* position: inherit; */
+}
+.white--theme .site--header{
+    /* position: inherit; */
+    border-bottom: 0.0625rem solid #D4D8E0;
+}
+.bg--grey .header--bg{
+    background: #F8F9FA;
+}
+.site--logo--dark,
+.mega--menu--open .site--logo,
+.white--theme .site--logo{
+    display: none;
+}
+.mega--menu--open .site--logo--dark,
+.white--theme .site--logo--dark{
+    display: block;
+}
+.mega--menu--open .site--menu > li > span > a,
+.white--theme .site--menu > li > span > a,
+.mega--menu--open .site--auth-menu > a:not(.primary),
+.white--theme .site--auth-menu > a:not(.primary){
+    color: #595F6C;
+}
+.mega--menu--open .site--menu li.has--drop--menu > span > a:after,
+.white--theme .site--menu li.has--drop--menu > span > a:after{
+    border-color: #595F6C;
+}
+.mega--menu--open .site--menu > li.active--mega--menu > span > a,
+.site--menu > li > span > a:hover{
+    color: #e00000;
+}
+.mega--menu--open .site--menu li.has--drop--menu.active--mega--menu > span > a:after,
+.site--menu li.has--drop--menu > span > a:hover:after{
+    border-color: #e00000;
+}
+
+.products-page .header--bg{
+    background-color: #101114;
+}
+.products-page .header--bg ul li a, .analyst-report-page .header--bg ul li a {
+    color: #fff;
+    opacity: 1;
+}
+.mega--menu--open .products-page .header--bg, .mega--menu--open .analyst-report-page .header--bg{
+    background-color: #fff;
+}
+.mega--menu--open .products-page .header--bg ul li a, .mega--menu--open .analyst-report-page .header--bg ul li a {
+    color: #000;
+}
+.products-page .site--header{
+    position: unset;
+}
+
+.products-page .site--header .site--menu > li > span > a{
+    /* opacity: 0.5; */
+}
+
+.products-page .site--header .site--menu > li > span > a:hover{
+    opacity: 1;
+}

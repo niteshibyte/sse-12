@@ -1,0 +1,227 @@
+/* Dropdown Css Start */
+
+.comp--menu--block ul li img, .mega--menu--block ul li img{
+    max-width: 2.25rem;
+}
+.comp--menu--block ul li span, .mega--menu--block ul li span, .mega--menu--block ul li span div {
+    align-items: center;
+    color: #000;
+    -moz-column-gap: .5rem;
+    column-gap: .5rem;
+    display: flex;
+    font-size: 1.125rem;
+    font-weight: 600;
+    width: 100%;
+}
+.resorces-menu-list>div {
+    background-color: #f8f9fa;
+    border: .125rem solid transparent;
+    border-radius: .25rem;
+}
+.resorces-menu-list p {
+    color: #101114;
+}
+.resorces-menu-list>div img {
+    flex-grow: 1;
+    margin-left: auto;
+    max-width: 10rem;
+    width: 100%;
+}
+.comp--menu--block{
+    position: relative;
+}
+.resources-menu-block-image .sub-mega-menu--list span a {
+    display: flex;
+    align-items: center;
+    color: #000;
+    column-gap: 0.5rem;
+    display: flex;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.resources-menu-block-image .sub-mega-menu--list span a img{
+    max-width: 2.25rem;
+}
+.site--logo{
+    cursor: pointer;
+}
+
+/* Dropdown Css End */
+
+/* .voc-section .button_Button__ah_Qj[data-button-dimension=regular]{
+    position: relative !important;
+} */
+
+.about-page .slider--head .short--width {
+    max-width: 48.75rem;
+    margin: auto;
+    width: 100%;
+}
+.become-partner-page .logo-container{
+    margin: 4rem auto;
+}
+.home--page .tab--gap button {
+    position: relative !important;
+}
+/* .tab--content--block .full--card--block.card--block{
+    padding: 4rem;
+} */
+.header--bg .circle--highlight.circle-left-top img{
+    width: auto;
+}
+.result-slider .stack--image {
+    height: 27.5rem;
+    overflow: hidden;
+    position: relative;
+}
+.result-slider .stack--image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.disclosure_Disclosure__E2R9s[data-disclosure-icon-position=left] .disclosure_ExpandIcon__yp_kf {
+    right: 0;
+    left: inherit;
+    top: 1rem;
+}
+.faq--field h4:after {
+    display: none
+}
+
+
+
+.circle--highlight.circle-right-bottom img{
+    width: auto;
+}
+.circle--highlight.circle-left-top img{
+    width: auto;
+}
+
+/* Form Css Start */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+.gridItem, .gridItemFull {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.formGroup label {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.125rem;
+    color: #454A55;
+}
+.formGroup input, .formGroup select {
+    border: 1px solid #D4D8E0;
+    border-radius: 0.5rem;
+    height: 3rem;
+    padding: 0.625rem 1rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.formGroup input::placeholder{
+    font-size: 1rem;
+}
+.formBtn input {
+    background: #e00000;
+    block-size: 2.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1.3125rem;
+    position: inherit;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+.become-partner-page-form .circle--highlight.circle-left-top {
+    left: 0;
+    top: 50%;
+    width: 26rem;
+    transform: translateY(-50%);
+}
+.become-partner-page-form .circle--highlight.circle-right-bottom {
+    right: 0;
+    top: 50%;
+    width: 26rem;
+    transform: translateY(-50%);
+    bottom: inherit;
+}
+.become-partner-page-form .circle--highlight.circle-bottom {
+    width: 26rem;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.become-partner-page-form form h3 {
+    color: #000;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+/* Form Css End */
+
+.footer--newsletter .formGroup {
+    flex-direction: row;
+    align-items: center;
+}
+.footer--small--print h3 p {
+    font-size: 2rem;
+    line-height: normal;
+}
+/* contact Us Css Start */
+
+.text-yellow.text--underline a {
+    color: #FFFFC7;
+}
+.primaryBtn.button {
+    color: #fff !important;
+}
+.team-page .media__item{
+    border-radius: 0.75rem;
+    overflow: hidden;
+    flex-basis: auto;
+}
+@media screen and (min-width: 768px){
+    .team-page .media__item{
+        height: 35rem;
+        overflow: hidden;
+    }
+}
+.right--content .social--link{
+    margin-left: auto;
+}
+.partner--logos--list svg path{
+    fill: #7f7f7f;
+}
+.partner--logos--list a{
+    display: inline-block;
+    height: 5rem;
+    overflow: hidden;
+    width: 100%;
+}
+.partner--logos--list a img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+/* Contact Us Css End */
+/* .site--footer h3, .site--footer ul a, .site--footer ul span {
+    font-size: 1.125rem;
+}
+.footer--utility-menu{
+    flex-basis: 50rem;
+    max-width: 50rem;
+} */
+
+@media screen and (max-width: 991px) {
+    .gridItem, .gridItemFull{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    /* .tab--content--block .full--card--block.card--block {
+        padding: 0rem;
+    } */
+}

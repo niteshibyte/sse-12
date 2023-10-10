@@ -1,0 +1,114 @@
+.site--banner{
+    background: #1F2227;
+    padding: 0;
+    position: relative;
+}
+.site--banner p, .site--banner h1{
+    color: #fff;
+    margin-bottom: 2rem;
+}
+.site--banner p p{
+    margin-bottom: 0;
+    font-size: 1.3125rem;
+    line-height: 1.5;
+}
+.banner-toggle__button {
+    display: block;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+.banner-toggle__button button {
+    background: none;
+}
+.video--btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.188rem solid #fff;
+    margin: auto;
+    cursor: pointer;
+}
+.video--btn svg path{
+    fill: #fff;
+}
+.video{
+    width: 100%;
+}
+
+.banner-title{
+    line-height: 1;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.banner-video{
+    position: relative;
+}
+.banner-video::after {
+    content: '';
+    position: absolute;
+    background: rgb(0 0 0 / 50%);
+    /* border-radius: 5px; */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.video + div {
+    z-index: 9;
+    position: relative;
+}
+.site--banner{
+    /* max-height: 45rem; */
+}
+
+@media screen and (min-width: 60rem){
+    .site--banner{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        /* height: 100vh; */
+        /* max-height: 48rem; */
+    }
+    .video + div {
+        position: absolute;
+        bottom: 7rem;
+    }
+    .banner-toggle__button button {
+        margin-bottom: 10rem;
+    }
+}
+@media screen and (max-width: 991px){
+    .banner-video video {
+        display: none;
+    }
+    .banner-video{
+        background-image: url('../public/home-banner.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 48rem;
+    }
+    .video+div{
+        padding-top: 14rem;
+    }
+    .button_Button__ah_Qj[data-button-dimension=regular]{
+        /* width: 100%; */
+    }
+    .info--content .button_Button__ah_Qj[data-button-dimension=regular]{
+        /* width: auto; */
+    }
+    .site--banner p p{
+        font-size: 1.125rem;
+    }
+    .card--block p.highlight--text {
+        font-size: 1rem;
+    }   
+}
+@media screen and (max-width: 500px){
+    .tab--content--block .bottom--text{
+        display: flex;
+    }
+}
