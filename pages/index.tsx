@@ -23,6 +23,7 @@ import { Standard } from '../components/future-standard/standard';
 import { HomeResource } from '../components/home/resources';
 import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
+import { Header } from '../components/header/header';
 
 export default function Home({data}:{data:any}) {
   const dispatch=useDispatch()
