@@ -91,7 +91,7 @@ export default function Home({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context:any) => {
- const data= await stackWrapper.getHomePage('home_page', 'blt8b06eea0c35a7994')
+ const data= await stackWrapper.getHomePage('home_page', 'blt8b06eea0c35a7994',context.query.lang)
  return {
   props: {
     data,

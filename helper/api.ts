@@ -9,10 +9,10 @@ const Stack = Contentstack.Stack({
 
 })
 export default {
-    getHeader(page: string, entry_id: string) {
+    getHeader(page: string, entry_id: string,lang:string|undefined='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
-                .Entry(entry_id).language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .Entry(entry_id).language(lang=='undefined'?"en-us":lang)
                 .includeFallback()
                 .includeReference('solution_side_ss.reference')
                 .toJSON()
@@ -27,12 +27,12 @@ export default {
                 )
         },)
     },
-    getFooter(page: string, entry_id: string) {
+    getFooter(page: string, entry_id: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .toJSON()
                 .fetch()
                 .then(
@@ -83,12 +83,12 @@ export default {
                 )
         },)
     },
-    getHomePage(page: string, entry_id: string) {
+    getHomePage(page: string, entry_id: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
-                .language('en-us')
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['partners', 'section_9_resources.reference', 'section_9_resources.reference.choose_categories', 'section_9_resources.reference.category', "section_four.side_slider.success_stories"])
                 .toJSON()
                 .fetch()
@@ -162,14 +162,14 @@ export default {
         },)
     },
 
-    getSingleWhitePaper(page: string, url: string) {
+    getSingleWhitePaper(page: string, url: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['category', 'whitepapestags'])
 
                 .where('url', `/${url}`)
@@ -187,17 +187,18 @@ export default {
                 )
         },)
     },
-    getNotInWhitePaper(page: string, url: string) {
+    getNotInWhitePaper(page: string, url: string,lang:string) {
+       console.log(url)
 
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['category', 'whitepapestags'])
 
-                .notEqualTo('url', `${url}`)
+                .notEqualTo('url', `/${url}`)
                 .addParam('include_count', 'true')
                 .limit(3)
                 .toJSON()
@@ -236,16 +237,15 @@ export default {
                 )
         },)
     },
-    getSingleWebinar(page: string, url: string) {
+    getSingleWebinar(page: string, url: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['choose_categories', 'choose_tags'])
-
                 .where('url', `/${url}`)
                 .addParam('include_count', 'true')
 
@@ -261,14 +261,14 @@ export default {
                 )
         },)
     },
-    getNotINWebinar(page: string, url: string) {
+    getNotINWebinar(page: string, url: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`).includeReference(['choose_categories', 'choose_tags'])
+                .language(lang=='undefined'?"en-us":lang).includeReference(['choose_categories', 'choose_tags'])
 
                 .notEqualTo('url', `/${url}`)
                 .addParam('include_count', 'true')
@@ -325,12 +325,12 @@ export default {
                 )
         },)
     },
-    getProductData(page: string, entry_id: string) {
+    getProductData(page: string, entry_id: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["partner_logos", "testimonial", "common_partner"])
                 .toJSON()
                 .fetch()
@@ -344,13 +344,13 @@ export default {
                 )
         },)
     },
-    getDepartmentData(page: string, title: string) {
+    getDepartmentData(page: string, title: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
 
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .where('url', title)
                 .includeReference(["hero_banner", "newsletter", 'partner_logo', 'testimonial'])
                 .toJSON()
@@ -365,12 +365,12 @@ export default {
                 )
         },)
     },
-    getIndustoryData(page: string, title: string) {
+    getIndustoryData(page: string, title: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .where('url', `/industries/${title}`)
                 .includeReference(["hero_banner", "partner_logo", "testimonial", "newsletter", "section_resources.reference", "section_resources.reference.choose_categories"])
                 .toJSON()
@@ -482,7 +482,7 @@ export default {
                 )
         },)
     },
-    getSuccessSingle(page: string, url: string) {
+    getSuccessSingle(page: string, url: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
@@ -490,7 +490,7 @@ export default {
                 .Query()
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['category', 'successtags'])
 
                 .where('url', `/${url}`)
@@ -508,7 +508,7 @@ export default {
                 )
         },)
     },
-    getSuccessRecent(page: string, url: string) {
+    getSuccessRecent(page: string, url: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
@@ -516,7 +516,7 @@ export default {
                 .Query()
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['category', 'successtags'])
 
                 .notEqualTo('url', `/${url}`)
@@ -556,13 +556,13 @@ export default {
                 )
         },)
     },
-    getTouchPointEntry(page: string, title: string) {
+    getTouchPointEntry(page: string, title: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .where('url', title)
                 .includeReference(["hero_banner", "newsletter", 'partners', 'testimonial'])
                 .toJSON()
@@ -728,7 +728,7 @@ export default {
         },)
     },
 
-    getSingleAnalyst(page: string, title: string) {
+    getSingleAnalyst(page: string, title: string,lang:string) {
 
         return new Promise((resolve, reject) => {
 
@@ -736,7 +736,7 @@ export default {
                 .Query()
                 .includeFallback()
                 .includeReference(['other_analyst_reports.select_categories'])
-                .language(`${localStorage.getItem("lang") || 'en-us'}`).includeReference(['select_categories', 'choose_tags', "other_analyst_reports"])
+                .language(lang=='undefined'?"en-us":lang).includeReference(['select_categories', 'choose_tags', "other_analyst_reports"])
 
                 .where('url', `/${title}`)
                 .addParam('include_count', 'true')
@@ -953,13 +953,13 @@ export default {
                 )
         },)
     },
-    getSingleBlog(page: string, url: string) {
+    getSingleBlog(page: string, url: string,lang:string='en-us') {
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
                 .includeFallback()
-                // .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(['report_category', 'types'])
                 .includeReference('select_author', 'select_category', 'select_tags')
                 .where('url', `/${url}`)
@@ -978,17 +978,20 @@ export default {
                 )
         },)
     },
-    getNotInBlog(page: string, url: string, limit: number) {
+    getNotInBlog(page: string, url: string, lang: string) {
+        console.log(lang)
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
-                .includeFallback().language(`${localStorage.getItem("lang") || 'en-us'}`).includeReference(['report_category', 'types'])
+                .includeFallback()
+                .language(lang=='undefined'?"en-us":lang)
+                .includeReference(['report_category', 'types'])
                 .includeReference('select_author', 'select_category', 'select_tags')
                 .notEqualTo('url', `/${url}`)
                 .addParam('include_count', 'true')
 
-                .limit(limit)
+                .limit(3)
                 .toJSON()
                 .find()
                 .then(
@@ -1083,5 +1086,6 @@ export default {
                     }
                 )
         },)
-    }
+    },
+   
 }
