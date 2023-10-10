@@ -68,9 +68,9 @@ export default function Home({data}:{data:any}) {
             <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
             <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
           </Head>
-          <Header />
+          {/* <Header /> */}
           <Banner  />
-          <PartnerLogos />
+          {/* <PartnerLogos />
           <SuccessDecisionMakers />
           <Roadmap />
           <Benefits />
@@ -79,7 +79,7 @@ export default function Home({data}:{data:any}) {
           <BookDemo />
           <StayWithUs />
           <Standard />
-          <HomeResource />
+          <HomeResource /> */}
 
           <Footer />
         </Stack>
