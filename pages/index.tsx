@@ -24,6 +24,7 @@ import Loader from '../components/loader/Loader';
 // import { Header } from '../components/header/header';
 // import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
+import { Header } from '../components/header/header';
 
 export default function Home({data}:{data:any}) {
   const dispatch=useDispatch()
@@ -68,7 +69,7 @@ export default function Home({data}:{data:any}) {
             <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
             <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
           </Head>
-          {/* <Header /> */}
+          <Header />
           <Banner  />
           {/* <PartnerLogos />
           <SuccessDecisionMakers />
