@@ -87,9 +87,9 @@ export const Header = () => {
                                 
                             } }
                             >
-                                {language?.map((item: any) => {
+                                {language?.map((item: any,index:number) => {
                                     return (
-                                        <option value={item.lang}>
+                                        <option key={index} value={item.lang}>
                                             {item.title}
                                         </option>
                                     )

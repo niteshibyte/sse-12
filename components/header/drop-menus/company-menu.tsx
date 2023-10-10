@@ -26,7 +26,7 @@ export const CompanyMenu = (props: any) => {
                                     <Text as="p" variant="body-1">{item?.sub_menu[0]?.description}</Text>
                                     {item?.sub_menu[0]?.sub_menu?.length > 0 && item?.sub_menu[0]?.sub_menu?.map((data: any, index: number) => {
                                         return (
-                                            <Stack as="div" hAlign="start">
+                                            <Stack key={index} as="div" hAlign="start">
                                                 <Link href={changeUrl(router.query.lang,data?.url?.href) }>
                                                     <Button kind="primary" dimension="big"  >{data?.url?.title}</Button>
 
@@ -50,7 +50,7 @@ export const CompanyMenu = (props: any) => {
                                     <Stack as="div" maxWidth="fit-content" direction="row" columnGap={16}>
                                         {item?.sub_menu[1]?.sub_menu?.length > 0 && item?.sub_menu[1]?.sub_menu?.map((data: any, index: number) => {
                                             return (
-                                                <Link href={changeUrl(router.query.lang,data?.url?.href) }>
+                                                <Link key={index} href={changeUrl(router.query.lang,data?.url?.href) }>
                                                     <Button kind="secondary" dimension="big"  >{data?.url?.title}</Button>
 
                                                 </Link>

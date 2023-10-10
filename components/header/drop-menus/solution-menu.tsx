@@ -29,7 +29,7 @@ export const SolutionMenu = (props: any) => {
                                     <List className="sub-menu-has-drop-menu">
                                         {item?.sub_menu[0]?.sub_menu?.length > 0 && item?.sub_menu[0]?.sub_menu?.map((data: any, index: number) => {
                                             return (
-                                                <List.Li>
+                                                <List.Li key={index}>
                                                     <Link href={changeUrl(router.query.lang,`/departments/${data?.url?.href?.split('/')[2]}`) }>
                                                         {data?.url?.title}
                                                     </Link>
@@ -54,7 +54,7 @@ export const SolutionMenu = (props: any) => {
                                         {
                                             item?.sub_menu[1]?.sub_menu?.length > 0 && item?.sub_menu[1]?.sub_menu?.map((data: any, index: number) => {
                                                 return (
-                                                    <List.Li>
+                                                    <List.Li key={index}>
                                                         <Link href={changeUrl(router.query.lang,`/industries/${data?.url?.href?.split('/')[2]}`) }>
                                                             {data?.url?.title}
                                                         </Link>
@@ -92,7 +92,7 @@ export const SolutionMenu = (props: any) => {
                                 <Carousel useArrowKeys={false} autoSwipe={1000} show={1} slide={1} transition={2}>
                                     {header?.solution_side_ss?.reference?.length > 0 && header?.solution_side_ss?.reference?.map((item: any, index: number) => {
                                         return (
-                                            <Stack as="div" className="mb-carosuel--item">
+                                            <Stack key={index} as="div" className="mb-carosuel--item">
                                                 <Link href={changeUrl(router.query.lang,`/resources/success-story${item?.url}`) }>
                                                     <a>
                                                         <Stack as="div" className="stack--image">

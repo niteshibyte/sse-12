@@ -20,9 +20,9 @@ export const MegaMenuFooter = () => {
                         <Stack as="div" className="mega-footer-icon">
                             <Carousel useArrowKeys={false} autoSwipe={1000} show={1} slide={1} transition={2}>
 
-                                {header?.bottom_bar_menu?.partner_images_for_vslider?.length > 0 && header?.bottom_bar_menu?.partner_images_for_vslider?.map((item: any) => {
+                                {header?.bottom_bar_menu?.partner_images_for_vslider?.length > 0 && header?.bottom_bar_menu?.partner_images_for_vslider?.map((item: any,index:number) => {
                                     return (
-                                        <img src={item?.url} alt="Footer Image" />
+                                        <img key={index} src={item?.url} alt="Footer Image" />
                                     )
                                 })}
                             </Carousel>

@@ -22,7 +22,7 @@ export const AuthMenu = () => {
                     {data?.call_us_group && data?.call_us_group?.length > 0 && data?.call_us_group?.map((item: any, i: number) => {
                         return (< >
 
-                            <Stack as="div" className="country__list" direction="row" vAlign="center" columnGap={16}>
+                            <Stack key={i} as="div" className="country__list" direction="row" vAlign="center" columnGap={16}>
                                 <Stack as="div" vAlign="center" className="flagImage">
                                     <div dangerouslySetInnerHTML={htmlToTextConvert(item.svg_flag_icons)} />
                                 </Stack>

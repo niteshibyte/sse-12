@@ -50,9 +50,9 @@ export const MainNav = () => {
     return (
         <Stack fill={false} columnGap={32} className="site--main--menu">
             <List className="site--menu desktop--menu">
-                {data && data?.length > 0 && data?.map((item: any) => {
+                {data && data?.length > 0 && data?.map((item: any,index:number) => {
                     return (
-                        <List.Li className={item?.sub_menu?.length == 0 ? "" :
+                        <List.Li key={index} className={item?.sub_menu?.length == 0 ? "" :
                             showMegaMenu == item?.title ? "has--drop--menu active--mega--menu" : "has--drop--menu"}>
                             {item?.sub_menu?.length > 0 ? <Text variant="body-1" as="a" href="javascript:void(0)" onClick={(e) => onClick(item?.title)}>
                                 {item?.title}

@@ -51,7 +51,7 @@ export const ProductMenu = (props: any) => {
                                         {item?.sub_menu[0]?.sub_menu?.length > 0 && item?.sub_menu[0]?.sub_menu?.map((data: any, index: number) => {
 
                                             return (
-                                                <List.Li >
+                                                <List.Li key={index}>
                                                     <Link key={data.url?.href}  href={changeUrl(router.query.lang,data?.url?.href) }>
                                                         <a>
                                                             <img src={data?.menu_icon?.url} alt="Icon" />
@@ -79,7 +79,7 @@ export const ProductMenu = (props: any) => {
                                     <List className="sub-menu-has-drop-menu">
                                         {item?.sub_menu[1]?.sub_menu?.length > 0 && item?.sub_menu[1]?.sub_menu?.map((data: any, index: number) => {
                                             return (
-                                                <List.Li>
+                                                <List.Li key={index}>
                                                     <Link href={changeUrl(router.query.lang,`/industries/${data?.url?.href?.split('/')[2]}`) }>
                                                         {data?.url?.title}
                                                     </Link>
@@ -105,7 +105,7 @@ export const ProductMenu = (props: any) => {
                                         {item?.sub_menu[2]?.sub_menu?.length > 0 && item?.sub_menu[2]?.sub_menu?.map((data: any, index: number) => {
 
                                             return (
-                                                <Link href={changeUrl(router.query.lang,data?.url?.href)  }>
+                                                <Link key={index} href={changeUrl(router.query.lang,data?.url?.href)  }>
                                                     <a>
                                                         <img src={data?.menu_icon?.url} alt="Logo" />
                                                     </a>

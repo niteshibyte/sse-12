@@ -48,7 +48,7 @@ export const ResourceMenu = (props: any) => {
                             <Stack as="div" direction="row" wrap vAlign="start" columnGap={24} rowGap={24} className="resources-menu-block">
                                 {item?.sub_menu?.length > 0 && item?.sub_menu?.map((data: any, index: number) => {
                                     return (
-                                        <Stack onClick={() => {
+                                        <Stack key={index} onClick={() => {
 
                                             if (data?.url?.href == '/blog') {
                                                 dispatch(SETSELECTEDDATA({ ...selectedData, 'blogTag': 'Customer interviews' }))
