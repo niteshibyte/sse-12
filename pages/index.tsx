@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import stackWrapper from '../helper/api'
 import { useSelector } from 'react-redux';
 import { SETHOMEDATA } from '../reducer/homeData';
-// import { Banner } from '../components/banner/banner';
+import { Banner } from '../components/banner/banner';
 import Head from 'next/head';
 // import Loader from '../components/loader/Loader';
 // import { PartnerLogos } from '../components/customer-support/customer-logos';
@@ -65,19 +65,18 @@ export default function Home({data}:{data:any}) {
             <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
             <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
           </Head>
-          <h1>Nitesh</h1>
-          {/* <Header />
+          {/* <Header /> */}
           <Banner  />
-          <PartnerLogos />
-          <SuccessDecisionMakers />
-          <Roadmap />
-          <Benefits />
-          <Results />
-          <Analytics />
-          <BookDemo />
-          <StayWithUs />
-          <Standard />
-          <HomeResource /> */}
+          {/* <PartnerLogos /> */}
+          {/* <SuccessDecisionMakers /> */}
+          {/* <Roadmap /> */}
+          {/* <Benefits /> */}
+          {/* <Results /> */}
+          {/* <Analytics /> */}
+          {/* <BookDemo /> */}
+          {/* <StayWithUs /> */}
+          {/* <Standard /> */}
+          {/* <HomeResource /> */}
 
           {/* <Footer /> */}
         </Stack>
