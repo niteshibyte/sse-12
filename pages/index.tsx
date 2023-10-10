@@ -10,23 +10,22 @@ import { useSelector } from 'react-redux';
 import { SETHOMEDATA } from '../reducer/homeData';
 import { Banner } from '../components/banner/banner';
 import Head from 'next/head';
-// import Loader from '../components/loader/Loader';
-// import { PartnerLogos } from '../components/customer-support/customer-logos';
-// import { SuccessDecisionMakers } from '../components/success-decision-makers/success-decision-makers';
-// import { Roadmap } from '../components/success-roadmap/roadmap';
-// import { Benefits } from '../components/benefits/benefits';
-// import { Results } from '../components/results/results';
-// import { Analytics } from '../components/voc-analytics/analytics';
-// import { BookDemo } from '../components/book-demo/book-demo';
-// import { StayWithUs } from '../components/stay-with-us/companies';
-// import { Standard } from '../components/future-standard/standard';
-// import { HomeResource } from '../components/home/resources';
-// import { Header } from '../components/header/header';
-// import { Footer } from '../components/footer/footer';
+import Loader from '../components/loader/Loader';
+import { PartnerLogos } from '../components/customer-support/customer-logos';
+import { SuccessDecisionMakers } from '../components/success-decision-makers/success-decision-makers';
+import { Roadmap } from '../components/success-roadmap/roadmap';
+import { Benefits } from '../components/benefits/benefits';
+import { Results } from '../components/results/results';
+import { Analytics } from '../components/voc-analytics/analytics';
+import { BookDemo } from '../components/book-demo/book-demo';
+import { StayWithUs } from '../components/stay-with-us/companies';
+import { Standard } from '../components/future-standard/standard';
+import { HomeResource } from '../components/home/resources';
+import { Header } from '../components/header/header';
+import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
 
 export default function Home({data}:{data:any}) {
-  console.log(data)
   const dispatch=useDispatch()
   const router=useRouter()
  useEffect(()=>{
@@ -49,7 +48,11 @@ export default function Home({data}:{data:any}) {
     xl: { rowGap: "128" },
     fallback: { rowGap: "64" },
   });
- 
+  console.log('kddk',router.isFallback)
+  if (!router.isFallback) {
+    <h1>Data is loading</h1>;
+  }
+
 
   return (
     <>
@@ -65,23 +68,23 @@ export default function Home({data}:{data:any}) {
             <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
             <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
           </Head>
-          {/* <Header /> */}
+          <Header />
           <Banner  />
-          {/* <PartnerLogos /> */}
-          {/* <SuccessDecisionMakers /> */}
-          {/* <Roadmap /> */}
-          {/* <Benefits /> */}
-          {/* <Results /> */}
-          {/* <Analytics /> */}
-          {/* <BookDemo /> */}
-          {/* <StayWithUs /> */}
-          {/* <Standard /> */}
-          {/* <HomeResource /> */}
+          <PartnerLogos />
+          <SuccessDecisionMakers />
+          <Roadmap />
+          <Benefits />
+          <Results />
+          <Analytics />
+          <BookDemo />
+          <StayWithUs />
+          <Standard />
+          <HomeResource />
 
-          {/* <Footer /> */}
+          <Footer />
         </Stack>
-      </> :<h1>Loading</h1> }
-      {/* <Loader height='100vh' width='100vw' /> */}
+      </> : <Loader height='100vh' width='100vw' />}
+
     </>
   );
 }
