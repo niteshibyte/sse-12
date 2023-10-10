@@ -1,4 +1,4 @@
-/* @import "@wonderflow/tokens/platforms/web/tokens.css"; */
+@import "@wonderflow/tokens/platforms/web/tokens.css";
 
 html{
     scroll-behavior: smooth;

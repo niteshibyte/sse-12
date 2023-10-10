@@ -13,7 +13,7 @@ import remarkMdxCodeMeta from "remark-mdx-code-meta";
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
-// const withTm = withTranspileModules(["@wonderflow/react-components"]);
+const withTm = withTranspileModules(["@wonderflow/react-components"]);
 
 const withMDX = mdx({
   options: {
@@ -26,13 +26,13 @@ const nextConfig = withPlugins(
   [
     [withBundleAnalyzer],
     [withImages],
-    // [
-    //   withMDX,
-    //   {
-    //     extension: /\.mdx?$/,
-    //   },
-    // ],
-    // [withTm],
+    [
+      withMDX,
+      {
+        extension: /\.mdx?$/,
+      },
+    ],
+    [withTm],
   ],
   {
     trailingSlash: true,

@@ -3,12 +3,16 @@ import '../styles/nitesh.css'
 import "../styles/additional-css-file.css"
 
 import type { AppProps } from 'next/app'
+import { ResponsiveProvider } from '@wonderflow/react-components';
 
 import { useEffect } from 'react';
 import Head from 'next/head';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function MyApp({ Component, pageProps }: AppProps) {
-  
+  useEffect(() => {
+    AOS.init()
+  }, [])
   return (
     <html lang="en" data-theme="light">
       <Head>
@@ -26,9 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         </script>
       </Head>
-      {/* <ResponsiveProvider> */}
+      <ResponsiveProvider>
         <Component {...pageProps} />
-      {/* </ResponsiveProvider> */}
+      </ResponsiveProvider>
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ3W82L"
         height="0" width="0" style={{ display: "none", visibility: 'hidden' }}></iframe>
       </noscript>
