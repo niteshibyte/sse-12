@@ -1,12 +1,48 @@
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
-  images: {
-    loader: 'akamai',
-    path: '',
+
+import bundleAnalyzer from "@next/bundle-analyzer";
+// import redirects from './redirects.js'
+import mdx from "@next/mdx";
+import withPlugins from "next-compose-plugins";
+import withImages from "next-images";
+import withTranspileModules from "next-transpile-modules";
+import remarkMdxCodeMeta from "remark-mdx-code-meta";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+// const withTm = withTranspileModules(["@wonderflow/react-components"]);
+
+const withMDX = mdx({
+  options: {
+    providerImportSource: "@mdx-js/react",
+    remarkPlugins: [remarkMdxCodeMeta],
   },
-  assetPrefix: './',
-};
+});
+
+const nextConfig = withPlugins(
+  [
+    [withBundleAnalyzer],
+    [withImages],
+    // [
+    //   withMDX,
+    //   {
+    //     extension: /\.mdx?$/,
+    //   },
+    // ],
+    // [withTm],
+  ],
+  {
+    trailingSlash: true,
+    
+    pageExtensions: ["js", "jsx", "tsx", "md", "mdx", "ts"],
+    swcMinify: true,
+    images: {
+      domains: ["media.hygraph.com", "media.graphassets.com"],
+    },
+  }
+);
 
 export default nextConfig;

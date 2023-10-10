@@ -10,10 +10,17 @@
     "export": "next export"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@next/bundle-analyzer": "^13.5.4",
+    "@next/mdx": "^13.5.4",
     "axios": "^1.5.1",
     "next": "12.1.6",
+    "next-compose-plugins": "^2.2.1",
+    "next-images": "^1.8.5",
+    "next-transpile-modules": "^10.0.1",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "remark-mdx-code-meta": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "17.0.40",
