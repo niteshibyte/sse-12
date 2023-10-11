@@ -64,8 +64,8 @@ export default function Home({data}:{data:any}) {
             <meta property="og:site_name" content='Wonderflow'></meta>
             <meta property="og:description" content={data?.seo_tags?.meta_description} />
             <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} /> */}
-            <meta property="og:image" itemProp="image" content= {data?.seo_tags?.meta_description} />
-<meta property="og:image:secure_url" content={data?.seo_tags?.meta_description} />
+            <meta property="og:image" itemProp="image" content= {data?.section_8_promotional?.hero_image?.url} />
+<meta property="og:image:secure_url" content={data?.section_8_promotional?.hero_image?.url} />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="500" />
 <meta property="og:image:height" content="400" />
