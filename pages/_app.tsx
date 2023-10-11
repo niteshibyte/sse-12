@@ -31,9 +31,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         </script>
       </Head>
-      <ResponsiveProvider>
+      {/* <ResponsiveProvider> */}
         <Component {...pageProps} />
-      </ResponsiveProvider>
+      {/* </ResponsiveProvider> */}
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ3W82L"
         height="0" width="0" style={{ display: "none", visibility: 'hidden' }}></iframe>
       </noscript>
