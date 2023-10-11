@@ -36,7 +36,7 @@ export const AnalystContent = () => {
 
     const getWebData = async (page: number, limit: number, selected: Object) => {
         try {
-            const data: any = await StackWrapper.getAnalyst('analyst_report_entries', "blt019f354bd8fbdf7d", page, limit, selected)
+            const data: any = await StackWrapper.getAnalyst('analyst_report_entries', "blt019f354bd8fbdf7d", page, limit, selected,`${router.query.lang}`)
             setData(data?.length > 0 ? data[0] : [])
             setTotalPage(data[1])
             dispatch(SETANALYSTDATA(data))

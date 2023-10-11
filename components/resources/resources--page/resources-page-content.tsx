@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 import stackWrapper from '../../../helper/api'
 import Link from "next/link";
 import Loader from "../../loader/Loader";
+import { useRouter } from "next/router";
 
 type config = {
     show: 1.25 | 2.25 | 3;
 }
 export const ResourcesPageContent = () => {
-
+const router=useRouter()
     const {value} = useBreakpointsConfig<config>({
         md: { show: 2.25 },
         lg: { show: 3 },
@@ -36,7 +37,7 @@ export const ResourcesPageContent = () => {
     }, [])
     const getWebinar = async () => {
         try {
-            const data: any = await stackWrapper.getAllWebinar('webinar_entry', 10)
+            const data: any = await stackWrapper.getAllWebinar('webinar_entry', 10,`${router.query.lang}`)
             setWebinar(data[0])
 
             setWebinarLoader(false)
@@ -48,7 +49,7 @@ export const ResourcesPageContent = () => {
     }
     const getWhitePaper = async () => {
         try {
-            const data: any = await stackWrapper.getAllWhitePaper('whitepaper_entries', 10)
+            const data: any = await stackWrapper.getAllWhitePaper('whitepaper_entries', 10,`${router.query.lang}`)
             setWhitepaper(data[0])
 
             setWhitePaperLoader(false)
@@ -60,7 +61,7 @@ export const ResourcesPageContent = () => {
     }
     const getSuccessStory = async () => {
         try {
-            const data: any = await stackWrapper.getSuccessStoryAll('success_stories_entry', 10)
+            const data: any = await stackWrapper.getSuccessStoryAll('success_stories_entry', 10,`${router.query.lang}`)
             setSuccess(data[0])
             setSuccessLoader(false)
         } catch (error) {
@@ -72,7 +73,7 @@ export const ResourcesPageContent = () => {
 
     const getAnlysis = async () => {
         try {
-            const data: any = await stackWrapper.getAllAnalysis('analyst_report_entries', 10)
+            const data: any = await stackWrapper.getAllAnalysis('analyst_report_entries', 10,`${router.query.lang}`)
             setAnalysis(data[0])
             setAnalysisLoader(false)
         } catch (error) {

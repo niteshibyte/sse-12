@@ -3,7 +3,9 @@ import { SectionHead } from "../section-head/section-head";
 import { useEffect, useState } from "react";
 import stackWrapper from '../../helper/api'
 import Link from "next/link";
+import { useRouter } from "next/router";
 export const CommonBlogSection = (props: any) => {
+    const router=useRouter()
     const [webinar, setWebinar] = useState<any>()
     const [successStory, setSuccessStory] = useState<any>()
     const [whitePaper, setWhitePaper] = useState<any>()
@@ -14,7 +16,7 @@ export const CommonBlogSection = (props: any) => {
     }, [])
     const getSuccessStory = async () => {
         try {
-            const data: any = await stackWrapper.getSuccessStoryAll('success_stories_entry', 1)
+            const data: any = await stackWrapper.getSuccessStoryAll('success_stories_entry', 1,`${router.query.lang}`)
             setSuccessStory(data[0][0])
 
         } catch (error) {
@@ -22,7 +24,7 @@ export const CommonBlogSection = (props: any) => {
     }
     const getWhitePaper = async () => {
         try {
-            const data: any = await stackWrapper.getAllWhitePaper('whitepaper_entries', 1)
+            const data: any = await stackWrapper.getAllWhitePaper('whitepaper_entries', 1,`${router.query.lang}`)
 
             setWhitePaper(data[0][0])
 
@@ -31,7 +33,7 @@ export const CommonBlogSection = (props: any) => {
     }
     const getWebinar = async () => {
         try {
-            const data: any = await stackWrapper.getAllWebinar('webinar_entry', 1)
+            const data: any = await stackWrapper.getAllWebinar('webinar_entry', 1,`${router.query.lang}`)
 
             if (data?.length > 0) {
                 setWebinar(data[0][0])

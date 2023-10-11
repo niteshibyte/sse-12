@@ -22,7 +22,7 @@ export const ReportLists = () => {
 
     const getProduct = async (option: any) => {
         try {
-            const data: any = await stackWrapper.getProductComperisions("product_comparison_entries", option)
+            const data: any = await stackWrapper.getProductComperisions("product_comparison_entries", option,`${router.query.lang}`)
             setProduct(data[0])
         } catch (error) {
 
@@ -31,7 +31,7 @@ export const ReportLists = () => {
     }
     const getReport = async (option: any) => {
         try {
-            const data: any = await stackWrapper.getReport("voc_report_entries", option)
+            const data: any = await stackWrapper.getReport("voc_report_entries", option,`${router.query.lang}`)
 
             setReport(data[0])
         } catch (error) {

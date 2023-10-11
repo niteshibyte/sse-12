@@ -32,7 +32,7 @@ export const ArticlesLists = (props: any) => {
     }
     const getAllBlog = async (page: number, limit: number, option: any) => {
         try {
-            const data: any = await stackWrapper.getAllBlog('blog_entries', page, limit, option)
+            const data: any = await stackWrapper.getAllBlog('blog_entries', page, limit, option,`${router.query.lang}`)
             setBlog(data[0])
             setTotalPage(data[1])
             setLoader(false)

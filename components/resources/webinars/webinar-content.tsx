@@ -1,4 +1,4 @@
-import { Container, List, Stack, Text, Card, Pagination, Spinner } from "@wonderflow/react-components";
+import { Container,  Stack,  Card, Pagination } from "@wonderflow/react-components";
 import { useSelector } from "react-redux";
 import { WebinarCardContent } from "./webinar-card-content";
 import { SectionHead } from "../../../components/section-head/section-head";
@@ -37,7 +37,7 @@ export const WebinarContent = () => {
 
     const getWebData = async (page: number, limit: number, selected: Object) => {
         try {
-            const data: any = await StackWrapper.getWebinar('webinar_entry', "blt9334a60c040a264d", page, limit, selected)
+            const data: any = await StackWrapper.getWebinar('webinar_entry', "blt9334a60c040a264d", page, limit, selected,`${router.query.lang}`)
             setData(data?.length > 0 ? data[0] : [])
             setTotalPage(data[1])
             dispatch(SETWEBINARAPIDATA(data))
@@ -53,7 +53,7 @@ export const WebinarContent = () => {
     const handlePage = ({ selected }: any) => {
         setLoader(true)
         setCurrentPage(selected + 1)
-        getWebData(selected + 1, 1, selectedItem)
+        getWebData(selected + 1, 10, selectedItem)
         router.push('#webinar')
     
     }
@@ -71,7 +71,7 @@ export const WebinarContent = () => {
 
                                 {data.map((item: any, index: number) => {
                                     return (
-                                        <Card padding={false} bordered highlightOnHover className="card--block">
+                                        <Card key={index} padding={false} bordered highlightOnHover className="card--block">
                                             <Link href={changeUrl(router.query.lang,`/resources/webinar${item?.url}`)}>
                                                 <a>
 

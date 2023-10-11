@@ -44,7 +44,8 @@ export const SuccessStoryContent = () => {
         "success_stories_entry",
         page,
         limit,
-        selected
+        selected,
+        `${router.query.lang}`
       );
       setData(data?.length > 0 ? data[0] : []);
       setTotalPage(data[1]);

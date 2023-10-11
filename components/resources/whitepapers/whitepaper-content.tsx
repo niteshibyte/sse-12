@@ -50,7 +50,8 @@ export const WhitePaperContent = () => {
         "blt6f4c61851c90a696",
         page,
         limit,
-        selected
+        selected,
+        `${router.query.lang}`
       );
       setData(data?.length > 0 ? data[0] : []);
       setTotalPage(data[1]);

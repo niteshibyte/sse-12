@@ -1,4 +1,4 @@
-'use client';
+
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import { Container, Spinner, useBreakpointsConfig, Stack } from '@wonderflow/react-components';
@@ -12,29 +12,18 @@ import StackWrapper from '../../../helper/api'
 import { SETWEBINARDATA } from '../../../reducer/webinar';
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
-export default function page() {
+export default function page({data}:{data:any}) {
 
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch();
-    const [data, setData] = useState<any>()
 
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
+        dispatch(SETWEBINARDATA(data))
+        setLoader(false)
 
-        getWebinar()
-
-    }, [])
-    const getWebinar = async () => {
-        try {
-            const data = await StackWrapper.gewWebinareData("webinar_page", "blt9334a60c040a264d")
-            setData(data)
-            dispatch(SETWEBINARDATA(data))
-            setLoader(false)
-        } catch (error) {
-            setLoader(false)
-
-        }
-    }
+    }, [data])
+   
 
     return (
         <>
@@ -60,3 +49,12 @@ export default function page() {
         </>
     )
 }
+
+export const getServerSideProps = async (context: any) => {
+    const data = await StackWrapper.gewWebinareData("webinar_page", "blt9334a60c040a264d", context.query.lang)
+    return {
+      props: {
+        data,
+      },
+    };
+  }

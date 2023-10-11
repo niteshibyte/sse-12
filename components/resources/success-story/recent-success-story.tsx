@@ -29,7 +29,7 @@ export const RecentWhitePaper = () => {
     const getAllWebinar = async (title: string) => {
 
         try {
-            const data: any = await StackWrapper.getAllWhitePaper('whitepaper_entries', 10)
+            const data: any = await StackWrapper.getAllWhitePaper('whitepaper_entries', 10,`${router.query.lang}`)
             if (data?.length > 0 && title) {
                 setData(data[0]?.filter((item: any) => item?.title != title))
 

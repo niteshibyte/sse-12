@@ -49,7 +49,7 @@ const lang='en-us'
     }
     const getAllWebinar = async () => {
         try {
-            const data: any = await StackWrapper.getAllWebinar('webinar_entry', 1)
+            const data: any = await StackWrapper.getAllWebinar('webinar_entry', 1,`${router.query.lang}`)
             if (data?.length > 0) {
                 setData(data[0][0])
 
