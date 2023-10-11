@@ -1,18 +1,12 @@
 
-'use client';
 import { useEffect, useState } from 'react';
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import { Container, Spinner, Stack, useBreakpointsConfig } from '@wonderflow/react-components';
-
-
-
-
+import { Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import { useDispatch } from 'react-redux';
 import stackWrapper from '../../../helper/api'
 import { Header } from '../../../components/header/header';
 import { Footer } from '../../../components/footer/footer';
-import { CommonBlogSection } from '../../../components/common-blog-section/common-blog-section';
 import { useRouter } from 'next/router';
 import { SETTOUCHPOINT } from '../../../reducer/touch-point';
 import { TouchPointTopSection } from '../../../components/touchpoint-view/touchpoint-top-section';
@@ -22,7 +16,6 @@ import { ValueDeliver } from '../../../components/touchpoint-view/value-deliver'
 import { CustomerElectronics } from '../../../components/touchpoint-view/consumer-electronics';
 import { TouchPointFAQ } from '../../../components/touchpoint-view/touchpoint-faq';
 import { ProductsPartnerLogo } from '../../../components/products/products-partner-logos';
-import { ProductBookDemo } from '../../../components/products/book-demo';
 import { BlogResources } from '../../../components/resources/blog-resources';
 import { BookDemo } from '../../../components/touchpoint-view/book-demo';
 import Head from 'next/head';

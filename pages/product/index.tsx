@@ -4,7 +4,6 @@ import '@wonderflow/themes';
 import { Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import containtStact from '../../helper/api';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { Header } from '../../components/header/header';
 import { ProductTopSection } from '../../components/products/top-section';
 import { ProductResults } from '../../components/products/product-results/product-results';
@@ -16,7 +15,7 @@ import { ProductTestimonialSlider } from '../../components/products/testimonial-
 import { ProductFAQ } from '../../components/products/faq-section';
 import { ProductBookDemo } from '../../components/products/book-demo';
 import { Footer } from '../../components/footer/footer';
-import { setProductPageData, setProductPageLoader } from '../../reducer/blog';
+import { setProductPageData} from '../../reducer/blog';
 import Head from 'next/head';
 import Loader from '../../components/loader/Loader';
 
@@ -25,7 +24,6 @@ type config = {
 }
 
 export default function Products({ data }: { data: any }) {
-    console.log(data)
     const dispatch = useDispatch();
     const [loader, setLoader] = useState(true)
 
@@ -83,6 +81,5 @@ export const getServerSideProps = async (context: any) => {
         props: {
             data,
         },
-
     };
 }

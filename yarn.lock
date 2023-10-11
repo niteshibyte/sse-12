@@ -5975,6 +5975,11 @@ next-progress@2.2.0:
   dependencies:
     nprogress "^0.2.0"
 
+next-seo@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.npmjs.org/next-seo/-/next-seo-6.1.0.tgz"
+  integrity sha512-iMBpFoJsR5zWhguHJvsoBDxDSmdYTHtnVPB1ij+CD0NReQCP78ZxxbdL9qkKIf4oEuZEqZkrjAQLB0bkII7RYA==
+
 next-themes@0.2.1:
   version "0.2.1"
   resolved "https://registry.npmjs.org/next-themes/-/next-themes-0.2.1.tgz"

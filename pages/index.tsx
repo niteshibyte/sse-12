@@ -3,7 +3,7 @@ import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import "animate.css";
 import { useEffect, useState } from 'react';
-import {  Stack, useBreakpointsConfig } from "@wonderflow/react-components";
+import { Stack, useBreakpointsConfig } from "@wonderflow/react-components";
 import { useDispatch } from 'react-redux';
 import stackWrapper from '../helper/api'
 import { useSelector } from 'react-redux';
@@ -25,14 +25,14 @@ import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
 import { Header } from '../components/header/header';
 
-export default function Home({data}:{data:any}) {
-  const dispatch=useDispatch()
-  const router=useRouter()
+export default function Home({ data }: { data: any }) {
+  const dispatch = useDispatch()
+  const router = useRouter()
   console.log(data?.section_8_promotional?.hero_image?.url)
- useEffect(()=>{
-  document.body.classList.remove("mega--menu--open")
-  dispatch(SETHOMEDATA(data))
- },[router])
+  useEffect(() => {
+    document.body.classList.remove("mega--menu--open")
+    dispatch(SETHOMEDATA(data))
+  }, [router])
   const [loader, setLoader] = useState(false)
 
 
@@ -40,7 +40,7 @@ export default function Home({data}:{data:any}) {
     rowGap: "64" | "96" | "128",
   }
 
- 
+
 
   const { matches, value } = useBreakpointsConfig<config>({
     md: { rowGap: "96" },
@@ -48,30 +48,26 @@ export default function Home({data}:{data:any}) {
     xl: { rowGap: "128" },
     fallback: { rowGap: "64" },
   });
-  
+
 
 
   return (
     <>
+      <Head>
+
+        <title>{data?.seo_tags?.meta_title}</title>
+        <meta name="description" content={data?.seo_tags?.meta_description} />
+        <meta name="keywords" content={data?.seo_tags?.keywords} />
+        <meta property="og:title" content={data?.seo_tags?.meta_title} />
+        <meta property="og:site_name" content='Wonderflow'></meta>
+        <meta property="og:description" content={data?.seo_tags?.meta_description} />
+        <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} />
+      </Head>
       {!loader ? <>
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
-          <Head>
 
-            {/* <title>{data?.seo_tags?.meta_title}</title>
-            <meta name="description" content={data?.seo_tags?.meta_description} />
-            <meta name="keywords" content={data?.seo_tags?.keywords} />
-            <meta property="og:title" content={data?.seo_tags?.meta_title} />
-            <meta property="og:site_name" content='Wonderflow'></meta>
-            <meta property="og:description" content={data?.seo_tags?.meta_description} />
-            <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} /> */}
-            <meta property="og:image" itemProp="image" content= {data?.section_8_promotional?.hero_image?.url} />
-<meta property="og:image:secure_url" content={data?.section_8_promotional?.hero_image?.url} />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="500" />
-<meta property="og:image:height" content="400" />
-          </Head>
           <Header />
-          <Banner  />
+          <Banner />
           <PartnerLogos />
           <SuccessDecisionMakers />
           <Roadmap />
@@ -91,11 +87,11 @@ export default function Home({data}:{data:any}) {
   );
 }
 
-export const getServerSideProps = async (context:any) => {
- const data= await stackWrapper.getHomePage('home_page', 'blt8b06eea0c35a7994',context.query.lang)
- return {
-  props: {
-    data,
-  },
-};
+export const getServerSideProps = async (context: any) => {
+  const data = await stackWrapper.getHomePage('home_page', 'blt8b06eea0c35a7994', context.query.lang)
+  return {
+    props: {
+      data,
+    },
+  };
 }
