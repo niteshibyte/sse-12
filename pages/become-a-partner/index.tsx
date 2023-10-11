@@ -1,4 +1,3 @@
-'use client';
 
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
@@ -14,49 +13,32 @@ import { useDispatch } from 'react-redux';
 import stackWrapper from '../../helper/api'
 import { SETBECOMEAPARTNER } from '../../reducer/becomeAPartner';
 import { CommonBlogSection } from '../../components/common-blog-section/common-blog-section';
-import { useSelector } from 'react-redux';
 import Head from 'next/head';
 import Loader from '../../components/loader/Loader';
-export default function BecomePartner() {
+import { useRouter } from 'next/router';
+export default function BecomePartner({data}:{data:any}) {
     const [loader, setLoader] = useState(true)
-    const { becomeapartner }: any = useSelector((state) => state)
-
+  const router=useRouter()
     const dispatch = useDispatch()
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
-        if (Object.keys(becomeapartner).length == 0) {
-            getBecomePartner()
+        dispatch(SETBECOMEAPARTNER(data))
+        setLoader(false)
 
-        } else {
-            setLoader(false)
-        }
-
-    }, [becomeapartner])
-    const getBecomePartner = async () => {
-        try {
-            const data = await stackWrapper.getBecomeAPartner('become_a_partner_page', 'bltbfbf0704cbd72b2a')
-
-            dispatch(SETBECOMEAPARTNER(data))
-            setLoader(false)
-
-        } catch (error) {
-            setLoader(false)
-
-        }
-
-    }
+    }, [router])
+   
     return (
         <>
             {!loader ? <>
                 <Head>
 
-                    <title>{becomeapartner?.seo_tags?.meta_title}</title>
-                    <meta name="description" content={becomeapartner?.seo_tags?.meta_description} />
-                    <meta name="keywords" content={becomeapartner?.seo_tags?.keywords} />
-                    <meta property="og:title" content={becomeapartner?.seo_tags?.meta_title} />
+                    <title>{data?.seo_tags?.meta_title}</title>
+                    <meta name="description" content={data?.seo_tags?.meta_description} />
+                    <meta name="keywords" content={data?.seo_tags?.keywords} />
+                    <meta property="og:title" content={data?.seo_tags?.meta_title} />
                     <meta property="og:site_name" content='Wonderflow'></meta>
-                    <meta property="og:description" content={becomeapartner?.seo_tags?.meta_description} />
-                    <meta property="og:image" content={becomeapartner?.seo_tags?.image_link?.href} />
+                    <meta property="og:description" content={data?.seo_tags?.meta_description} />
+                    <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
                 </Head>
                 <Container dimension='full' padding={false} className='white--theme bg--grey become-partner-page'>
                     <Header />
@@ -75,4 +57,14 @@ export default function BecomePartner() {
             </> : <Loader height='100vh' width='100vw' />}
         </>
     )
+}
+
+export const getServerSideProps = async (context: any) => {
+    const data = await stackWrapper.getBecomeAPartner('become_a_partner_page', 'bltbfbf0704cbd72b2a', context.query.lang)
+    return {
+        props: {
+            data,
+        },
+
+    };
 }

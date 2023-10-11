@@ -1,8 +1,7 @@
-'use client';
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import { useEffect, useState } from 'react';
-import { Container, Spinner, Stack } from '@wonderflow/react-components';
+import {  Stack } from '@wonderflow/react-components';
 import { useDispatch } from 'react-redux';
 import { SETBLOGDATA } from '../../reducer/blog';
 import { Header } from '../../components/header/header';
@@ -15,40 +14,30 @@ import { Footer } from '../../components/footer/footer';
 import Head from 'next/head';
 import Loader from '../../components/loader/Loader';
 
-export default function blog() {
-  const [blogData, setBlogData] = useState<any>();
+export default function blog({data}:{data:any}) {
   const [loader, setLoader] = useState(true)
   const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.classList.remove("mega--menu--open")
+    dispatch(SETBLOGDATA(data))
+    setLoader(false)
 
-    getAllBlog()
-  }, [])
-  const getAllBlog = async () => {
-    try {
-      const data: any = await stackWrapper.getBlogPage('blog_page', 'bltbe55f1d2d97c3bf1')
-      setBlogData(data)
-      dispatch(SETBLOGDATA(data))
-      setLoader(false)
-    } catch (error) {
-      setLoader(false)
-
-    }
-  }
+  }, [data])
+ 
 
   return (
     <>
       {!loader ? <>
         <Head>
 
-          <title>{blogData?.seo_tags?.meta_title}</title>
-          <meta name="description" content={blogData?.seo_tags?.meta_description} />
-          <meta name="keywords" content={blogData?.seo_tags?.keywords} />
-          <meta property="og:title" content={blogData?.seo_tags?.meta_title} />
+          <title>{data?.seo_tags?.meta_title}</title>
+          <meta name="description" content={data?.seo_tags?.meta_description} />
+          <meta name="keywords" content={data?.seo_tags?.keywords} />
+          <meta property="og:title" content={data?.seo_tags?.meta_title} />
           <meta property="og:site_name" content='Wonderflow'></meta>
-          <meta property="og:description" content={blogData?.seo_tags?.meta_description} />
-          <meta property="og:image" content={blogData?.seo_tags?.image_link?.href} />
+          <meta property="og:description" content={data?.seo_tags?.meta_description} />
+          <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
         </Head>
         <Stack as="div" direction='column' rowGap={128} className='blog-page-view'>
           <Header />
@@ -62,4 +51,14 @@ export default function blog() {
       </> : <Loader height='100vh' width='100vw' />}
     </>
   )
+}
+
+export const getServerSideProps = async (context: any) => {
+  const data = await stackWrapper.getBlogPage('blog_page', 'bltbe55f1d2d97c3bf1', context.query.lang)
+  return {
+      props: {
+          data,
+      },
+
+  };
 }

@@ -1,7 +1,7 @@
-'use client';
+
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import { Container, Spinner, Stack, useBreakpointsConfig } from '@wonderflow/react-components';
+import {  Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { AboutBanner } from '../../components/about-us/about-banner';
@@ -27,32 +27,16 @@ type config = {
     rowGap: "64" | "128",
 }
 
-export default function AboutUs() {
+export default function AboutUs({data}:{data:any}) {
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch()
-    const { about }: any = useSelector((state) => state)
+   
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
-
-        if (Object.keys(about)?.length == 0) {
-            getAboutUs()
-
-        } else {
-            setLoader(false)
-        }
-    }, [about])
-    const getAboutUs = async () => {
-        try {
-            const data = await stackWrapper.getAboutUsPage('about_us_page', 'blt01088a200f6cd6c0')
-            dispatch(SETABOUTUS(data))
-            setLoader(false)
-
-        } catch (error) {
-            setLoader(false)
-
-        }
-
-    }
+        dispatch(SETABOUTUS(data))
+        setLoader(false)
+    }, [data])
+   
 
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "128" },
@@ -66,13 +50,13 @@ export default function AboutUs() {
             {!loader ? <>
                 <Head>
 
-                    <title>{about?.seo_tags?.meta_title}</title>
-                    <meta name="description" content={about?.seo_tags?.meta_description} />
-                    <meta name="keywords" content={about?.seo_tags?.keywords} />
-                    <meta property="og:title" content={about?.seo_tags?.meta_title} />
+                    <title>{data?.seo_tags?.meta_title}</title>
+                    <meta name="description" content={data?.seo_tags?.meta_description} />
+                    <meta name="keywords" content={data?.seo_tags?.keywords} />
+                    <meta property="og:title" content={data?.seo_tags?.meta_title} />
                     <meta property="og:site_name" content='Wonderflow'></meta>
-                    <meta property="og:description" content={about?.seo_tags?.meta_description} />
-                    <meta property="og:image" content={about?.seo_tags?.image_link?.href} />
+                    <meta property="og:description" content={data?.seo_tags?.meta_description} />
+                    <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
                 </Head>
                 <Stack direction='column' rowGap={value.rowGap} className='white--theme about-page'>
                     <Header />
@@ -92,4 +76,13 @@ export default function AboutUs() {
             </> : <Loader height='100vh' width='100vw' />}
         </>
     )
+}
+export const getServerSideProps = async (context: any) => {
+    const data = await stackWrapper.getAboutUsPage('about_us_page', 'blt01088a200f6cd6c0', context.query.lang)
+    return {
+        props: {
+            data,
+        },
+
+    };
 }

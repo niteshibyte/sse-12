@@ -577,13 +577,13 @@ export default {
                 )
         },)
     },
-    getAboutUsPage(page: string, entry_id: string) {
+    getAboutUsPage(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["testimonials"])
                 .toJSON()
                 .fetch()
@@ -597,13 +597,13 @@ export default {
                 )
         },)
     },
-    getContactUs(page: string, entry_id: string) {
+    getContactUs(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["partners_contactus"])
                 .toJSON()
                 .fetch()
@@ -658,13 +658,13 @@ export default {
                 )
         },)
     },
-    getBecomeAPartner(page: string, entry_id: string) {
+    getBecomeAPartner(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["partners"])
                 .toJSON()
                 .fetch()
@@ -900,10 +900,10 @@ export default {
         },)
     },
 
-    getBlogPage(page: string, entry_id: string) {
+    getBlogPage(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
-                .Entry(entry_id).language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .Entry(entry_id).language(lang=='undefined'?"en-us":lang)
                 .includeFallback()
                 .includeReference(["featured_posts", "featured_posts.select_category", 'select_authors', 'select_categories', 'select_tags'])
                 .toJSON()

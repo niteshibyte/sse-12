@@ -2,7 +2,6 @@ import { Provider } from 'react-redux'
 import "../styles/main.css";
 import '../styles/nitesh.css'
 import "../styles/additional-css-file.css"
-
 import type { AppProps } from 'next/app'
 import store from "../store/store";
 import AOS from 'aos';

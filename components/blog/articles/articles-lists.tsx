@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import NoDataFound from '../../no-data-found/no-data-found'
 import Loader from "../../loader/Loader";
+import { changeUrl } from "../../../helper/ChangeLanguage";
 
 export const ArticlesLists = (props: any) => {
     const [totalPage, setTotalPage] = useState(1)
@@ -48,7 +49,7 @@ export const ArticlesLists = (props: any) => {
                     {blog.map((data: any, index: number) => {
                         return (
                             <Card key={index} className="card--block" bordered padding={false} highlightOnHover>
-                                <Link href={`/blog${data?.url}`}>
+                                <Link href={changeUrl(router.query.lang,`/blog${data?.url}`) }>
                                     <a>
 
                                         <Stack direction="row" wrap as="div" vAlign="center">

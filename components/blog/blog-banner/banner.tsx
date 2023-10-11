@@ -4,7 +4,10 @@ import dateFormat from "dateformat";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export default function Blogbanner() {
+    const router=useRouter()
     const { blog_Data } = useSelector((state: any) => state?.blogData);
     return (
         <>
@@ -20,7 +23,7 @@ export default function Blogbanner() {
                                 if ((index + 4) % 4 == 0) {
                                     return (
                                         <Stack className="grid--item">
-                                            <Link href={`/blog${item?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`/blog${item?.url}`)}>
                                                 <a>
 
                                                     <Stack direction="row" wrap as="div" vAlign="center" rowGap={16} columnGap={16}>
@@ -44,7 +47,7 @@ export default function Blogbanner() {
                                 } else {
                                     return (
                                         <Stack className="grid--item">
-                                            <Link href={`/blog${item?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`/blog${item?.url}`)}>
                                                 <a>
                                                     <Stack direction="row" wrap as="div" vAlign="center" rowGap={16} columnGap={16}>
                                                         <Stack as="div" className="card--image">

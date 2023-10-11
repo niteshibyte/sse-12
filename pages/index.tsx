@@ -3,7 +3,7 @@ import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import "animate.css";
 import { useEffect, useState } from 'react';
-import { Button, Container, Spinner, Stack, useBreakpointsConfig } from "@wonderflow/react-components";
+import {  Stack, useBreakpointsConfig } from "@wonderflow/react-components";
 import { useDispatch } from 'react-redux';
 import stackWrapper from '../helper/api'
 import { useSelector } from 'react-redux';
@@ -31,7 +31,7 @@ export default function Home({data}:{data:any}) {
  useEffect(()=>{
   document.body.classList.remove("mega--menu--open")
   dispatch(SETHOMEDATA(data))
- },[data])
+ },[router])
   const [loader, setLoader] = useState(false)
   const { homeData }: any = useSelector((state) => state)
 

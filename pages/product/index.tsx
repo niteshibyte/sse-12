@@ -31,7 +31,6 @@ export default function Products({ data }: { data: any }) {
     useEffect(() => {
         dispatch(setProductPageData(data));
         setLoader(false)
-
     }, [data])
 
 
