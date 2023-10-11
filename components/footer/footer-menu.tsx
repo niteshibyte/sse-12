@@ -3,8 +3,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { footerMenu } from "../../interface/footer";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const FooterMenu = () => {
+    const router=useRouter()
     const [footer, setFooter] = useState<footerMenu>()
     const data = useSelector((state: any) => state?.footer);
     
@@ -30,7 +33,7 @@ export const FooterMenu = () => {
                         {footer?.resources_menu  && footer?.resources_menu?.link?.map((item, index: number) => {
                             return (
                                 <List.Li key={index}>
-                                    <Link href={item?.href}>{item?.title}</Link>
+                                    <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                 </List.Li>)
                         })}
                     </List>
@@ -41,7 +44,7 @@ export const FooterMenu = () => {
                         {footer?.company_menu && footer?.company_menu?.link?.map((item, index: number) => {
                             return (
                                 <List.Li key={index}>
-                                    <Link href={item?.href}>{item?.title}</Link>
+                                    <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                 </List.Li>)
                         })}
                     </List>
@@ -52,7 +55,7 @@ export const FooterMenu = () => {
                         {footer?.support_menu && footer?.support_menu?.link?.map((item, index) => {
                             return (
                                 <List.Li key={index}>
-                                    <Link href={item?.href}>{item?.title}</Link>
+                                    <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                 </List.Li>)
                             })
                         }
@@ -68,7 +71,7 @@ export const FooterMenu = () => {
                             {footer?.resources_menu  && footer?.resources_menu?.link?.map((item, index: number) => {
                                 return (
                                     <List.Li key={index}>
-                                        <Link href={item?.href}>{item?.title}</Link>
+                                        <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                     </List.Li>)
                                 })
                             }
@@ -82,7 +85,7 @@ export const FooterMenu = () => {
                             {footer?.company_menu && footer?.company_menu?.link?.map((item, index: number) => {
                                 return (
                                     <List.Li key={index}>
-                                        <Link href={item?.href}>{item?.title}</Link>
+                                        <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                     </List.Li>)
                                 })
                             }
@@ -96,7 +99,7 @@ export const FooterMenu = () => {
                             {footer?.support_menu && footer?.support_menu?.link?.map((item, index) => {
                                 return (
                                     <List.Li key={index}>
-                                        <Link href={item?.href}>{item?.title}</Link>
+                                        <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                     </List.Li>)
                                 })
                             }

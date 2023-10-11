@@ -1,7 +1,10 @@
 import Link from "next/link";
 import htmlToTextConvert from "../../../helper/htmlToTextConvert";
 import { Button, List, Stack, Text } from "@wonderflow/react-components";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const MediaSections = (props: any) => {
+    const router=useRouter()
     return (
         <Stack className={props.mediaClass} direction="row" vAlign="center" wrap rowGap={32} columnGap={96}>
             {props.mediaImage &&
@@ -41,7 +44,7 @@ export const MediaSections = (props: any) => {
                 {props.mediaButton &&
                     <Stack direction="column" hAlign="start" vAlign="center" className="mt-8">
 
-                        <Link href={props.mediaButtonHref}>
+                        <Link href={changeUrl(router.query.lang,props.mediaButtonHref)}>
                             <Button kind={props.mediaButtonClass} dimension="big"  >{props.mediaButton}</Button>
 
                         </Link>

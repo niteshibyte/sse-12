@@ -2,8 +2,11 @@ import { Button, Container, Stack } from "@wonderflow/react-components";
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const DiscoverWonderflow = () => {
+    const router=useRouter()
     const { career }: any = useSelector((state) => state)
     return (
         <>
@@ -28,7 +31,7 @@ export const DiscoverWonderflow = () => {
 
                                 {/* Button */}
                                 <Stack as="div" direction="column" hAlign="center" className="mt-6">
-                                    <Link href={career?.promotional_banner?.button_name?.href}>
+                                    <Link href={changeUrl(router.query.lang,`${career?.promotional_banner?.button_name?.href}`)}>
                                         <Button kind='primary' dimension="big"  >{career?.promotional_banner?.button_name?.title}</Button>
 
                                     </Link>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NoDataFound from "../../no-data-found/no-data-found";
+import { changeUrl } from "../../../helper/ChangeLanguage";
 export const ReportLists = () => {
     const [product, setProduct] = useState<any>()
     const [report, setReport] = useState<any>()
@@ -96,7 +97,7 @@ export const ReportLists = () => {
                         {result?.map((data: any, index: number) => {
                             return (
                                 <Stack className="card--block">
-                                    <Link href={data?.type == "vocreport" ? `/business-intelligence/voc-reports${data?.url}` : `/business-intelligence/product-comparison${data?.url}`}>
+                                    <Link href={changeUrl(router.query.lang,`${data?.type == "vocreport" ? `/business-intelligence/voc-reports${data?.url}` : `/business-intelligence/product-comparison${data?.url}`}`)}>
 
                                         <a>
 

@@ -8,7 +8,10 @@ import { SolutionMenu } from "./drop-menus/solution-menu";
 import { ResourceMenu } from "./drop-menus/resources-menu";
 import { CompanyMenu } from "./drop-menus/company-menu";
 import { BecomeOurPartner } from "./drop-menus/become-our-partner";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const MobileMenu = () => {
+    const router=useRouter()
     const language = [{
         lang: 'en-us',
         title: 'English'
@@ -163,7 +166,7 @@ export const MobileMenu = () => {
 
                                             {item?.sub_menu?.length > 0 ? <Text variant="body-1" as="a" href="#" onClick={(e) => onClick(item?.title)}>
                                                 {item?.title}
-                                            </Text> : <Link href={`${item?.url}`}>
+                                            </Text> : <Link href={changeUrl(router.query.lang,`${item?.url}`)}>
                                                 {item?.title}
                                             </Link>}
                                             {getComponent(item?.url, item)}

@@ -4,7 +4,10 @@ import { useSelector } from "react-redux";
 import { authNav } from "../../interface/header";
 import Link from "next/link";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const AuthMenu = () => {
+    const router=useRouter()
     const [data, setData] = useState<authNav>()
     const header = useSelector((state: any) => state?.header);
     useEffect(() => {
@@ -12,7 +15,7 @@ export const AuthMenu = () => {
     }, [header])
     return (
         <Stack direction="row" vAlign="center" hAlign="center" fill={false} columnGap={8} className="site--auth-menu desktop--btn">
-            <Link href={data?.login?.href || "/"}>
+            <Link href={changeUrl(router.query.lang,data?.login?.href || "/")}>
                 <Button dimension="big" kind="flat" className="auth-menu-flat">{data?.login?.title}</Button>
 
             </Link>
@@ -38,7 +41,7 @@ export const AuthMenu = () => {
                     })}
                 </Menu>
             </Popover>
-            <Link href={data?.demo_request?.href || "/demo"} as={data?.demo_request?.href || "/demo"}>
+            <Link href={changeUrl(router.query.lang,data?.demo_request?.href || "/demo")} as={data?.demo_request?.href || "/demo"}>
                 <Button kind="primary" dimension="big"  >{data?.demo_request?.title}</Button>
             </Link>
         </Stack>

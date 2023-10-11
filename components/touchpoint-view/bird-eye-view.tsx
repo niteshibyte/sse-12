@@ -2,7 +2,10 @@ import { Container, Stack, Card, Text, Button, List } from "@wonderflow/react-co
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const BirdEyeView = () => {
+    const router=useRouter()
     const { sectionone } = useSelector((state: any) => state?.touchpoint)
     return (
         <>
@@ -46,7 +49,7 @@ export const BirdEyeView = () => {
                         </Stack>
                         <Stack direction="column" hAlign="center" vAlign="center" className="mt-8">
 
-                            <Link href={sectionone?.get_started?.href}>
+                            <Link href={changeUrl(router.query.lang,sectionone?.get_started?.href)}>
                                 <Button kind='primary' dimension="big"  >{sectionone?.get_started?.title}</Button>
 
                             </Link>

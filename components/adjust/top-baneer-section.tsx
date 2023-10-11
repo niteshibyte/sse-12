@@ -2,12 +2,15 @@ import { Button, Container, Select, Stack, Text, Textfield, useBreakpointsConfig
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 
 type config = {
     variant: "display-3" | "heading-1";
 }
 
 export const TopBannerSection = () => {
+    const router=useRouter()
     const { marketing }: any = useSelector((state: any) => state)
 
     const { matches, value } = useBreakpointsConfig<config>({
@@ -26,7 +29,7 @@ export const TopBannerSection = () => {
                 <Container dimension="large">
                     <Stack as="div" className="adjust--header" direction="row" vAlign="center">
                         <Stack className="adjust--logo" as="div">
-                            <Link href='/'>
+                            <Link href= {changeUrl(router.query.lang,'/')} >
                                 <div dangerouslySetInnerHTML={htmlToTextConvert(marketing?.svg_for_logo)} />
                             </Link>
                         </Stack>

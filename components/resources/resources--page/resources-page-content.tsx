@@ -8,6 +8,7 @@ import stackWrapper from '../../../helper/api'
 import Link from "next/link";
 import Loader from "../../loader/Loader";
 import { useRouter } from "next/router";
+import { changeUrl } from "../../../helper/ChangeLanguage";
 
 type config = {
     show: 1.25 | 2.25 | 3;
@@ -107,7 +108,7 @@ const router=useRouter()
                                     title="Webinars"
                                 />
                                 <Stack as="div" className="buttonWidth">
-                                    <Link href="/resources/webinar">
+                                    <Link href={changeUrl(router.query.lang,"/resources/webinar")}>
                                         <Button kind="secondary" dimension="big"  >View All</Button>
                                     </Link>
                                 </Stack>
@@ -119,7 +120,7 @@ const router=useRouter()
 
                                     {webinar?.map((item: any) => {
                                         return (
-                                            <Link href={`/resources/webinar/${item?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`/resources/webinar/${item?.url}`)}>
                                                 <a>
 
                                                     <CardSlider
@@ -148,7 +149,7 @@ const router=useRouter()
                                     title="Analyst Reports"
                                 />
                                 <Stack as="div" className="buttonWidth">
-                                    <Link href="/resources/analyst-report">
+                                    <Link href={changeUrl(router.query.lang,"/resources/analyst-report")}>
                                         <Button kind="secondary" dimension="big">View All</Button>
                                     </Link>
                                 </Stack>
@@ -160,7 +161,7 @@ const router=useRouter()
                                     {analysis?.map((item: any) => {
                                         return (
 
-                                            <Link href={`/resources/analyst-report${item?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`/resources/analyst-report${item?.url}`)}>
 
                                                 <a>
                                                     <CardSlider
@@ -185,7 +186,7 @@ const router=useRouter()
                                     title="Whitepapers"
                                 />
                                 <Stack as="div" className="buttonWidth">
-                                    <Link href="/resources/whitepaper">
+                                    <Link href={changeUrl(router.query.lang,"/resources/whitepaper")}>
                                         <Button kind="secondary" dimension="big"  >View All</Button>
 
                                     </Link>
@@ -195,7 +196,7 @@ const router=useRouter()
                                 <Carousel show={value.show} slide={1} transition={0.5} >
                                     {whitepaper?.map((item: any) => {
                                         return (
-                                            <Link href={`/resources/whitepaper/${item?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`/resources/whitepaper/${item?.url}`)}>
                                                 <a>
                                                     <CardSlider
                                                         cardImage={item?.featured_image?.url}
@@ -218,7 +219,7 @@ const router=useRouter()
                                     title="Success Stories"
                                 />
                                 <Stack as="div" className="buttonWidth">
-                                    <Link href="/resources/success-story">
+                                    <Link href={changeUrl(router.query.lang,"/resources/success-story")}>
                                         <Button kind="secondary" dimension="big"  >View All</Button>
 
                                     </Link>
@@ -232,8 +233,7 @@ const router=useRouter()
                                     {success?.map((item: any) => {
                                         return (
                                             <Link
-                                                href={`/resources/success-story/${item?.url?.split("/")[1]
-                                                    }`}
+                                                href={changeUrl(router.query.lang,`/resources/success-story/${item?.url?.split("/")[1]}`)}
                                             >
                                                 <a>
                                                     <CardSlider

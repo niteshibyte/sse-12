@@ -1,8 +1,11 @@
 import { Button, Container, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useSelector } from "react-redux"
+import { changeUrl } from "../../helper/ChangeLanguage"
 
 export const AdjustFooter = () => {
+    const router=useRouter()
     const { section_5_lead_generation_,footer }: any = useSelector((state: any) => state?.marketing)
 
     return(
@@ -28,7 +31,7 @@ export const AdjustFooter = () => {
                     <Container dimension="large">
                         <Stack as="div" hAlign="center" vPadding={48} rowGap={32}>
                             <Stack className="adjust--logo" as="div" hAlign="center">
-                                <Link href='/'>
+                                <Link href={changeUrl(router.query.lang,`/`)}>
                                     <img src={footer?.logo?.url} />
                                 </Link>
                             </Stack>

@@ -3,11 +3,13 @@ import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 type config = {
     rowGap: "48" | "64" | "96";
 }
 export const Roadmap = () => {
-
+    const router=useRouter()
     const {matches, value} = useBreakpointsConfig<config>({
         md: {rowGap: "64"},
         lg: {rowGap: "96"},
@@ -51,7 +53,7 @@ export const Roadmap = () => {
                                                     })}
                                                 </Stack>
                                                 <Stack direction="column" hAlign="start" vAlign="center" vPadding={16}>
-                                                    <Link href={item?.button_name?.href}>
+                                                    <Link href={changeUrl(router.query.lang,item?.button_name?.href)}>
                                                         <Button kind="secondary" dimension="big">{item?.button_name?.title}</Button>
 
                                                     </Link>

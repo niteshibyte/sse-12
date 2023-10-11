@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 type config = {
     direction: "row" | "column";
     hPadding: "0" | "24";
@@ -11,6 +13,7 @@ type config = {
     variant: "heading-2" | "display-4";
 }
 export const Analytics = () => {
+    const router=useRouter()
     const { section_5_tabs }: any = useSelector((state: any) => state?.homeData)
     const [tabNumber, setTabNumber] = useState(0)
     const [content, setContent] = useState([])
@@ -55,7 +58,7 @@ export const Analytics = () => {
                                                                         <div dangerouslySetInnerHTML={htmlToTextConvert(data?.tab_description)} />
                                                                     </Text>
                                                                     <Stack direction="column" hAlign="start" className="mt-12">
-                                                                        <Link href={data?.button_link?.href}>
+                                                                        <Link href={changeUrl(router.query.lang,data?.button_link?.href)}>
                                                                             <Button kind="primary" dimension="big"  >{data?.button_link?.title}</Button>
 
                                                                         </Link>

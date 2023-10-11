@@ -2,9 +2,12 @@ import { Stack } from "@wonderflow/react-components";
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const OurPartners = () => {
     const { becomeapartner }: any = useSelector((state) => state)
+    const router=useRouter()
     return (
         <>
             {becomeapartner && becomeapartner?.partner_section && <>
@@ -38,7 +41,7 @@ export const OurPartners = () => {
 
                     {/* Button */}
                     <Stack as="div" direction="column" hAlign="center" className="">
-                        <Link href={becomeapartner?.partner_section?.button_name?.href}>
+                        <Link href={changeUrl(router.query.lang,`${becomeapartner?.partner_section?.button_name?.href}`)}>
                             <a className="primaryBtn button">{becomeapartner?.partner_section?.button_name?.title}</a>
                         </Link>
                     </Stack>

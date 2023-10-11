@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import stackWrapper from '../../helper/api'
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 export const CommonBlogSection = (props: any) => {
     const router=useRouter()
     const [webinar, setWebinar] = useState<any>()
@@ -56,7 +57,7 @@ export const CommonBlogSection = (props: any) => {
                     <Stack as="div" className="mt-16 tab--content--block animate__animated animate__fadeInUp" direction="row" wrap rowGap={32} columnGap={32} hAlign="center">
                         {whitePaper &&
                             <Card padding={false} bordered highlightOnHover className="card--block">
-                                <Link href={`/resources/whitepaper${whitePaper?.url}`}>
+                                <Link href={changeUrl(router.query.lang,`/resources/whitepaper${whitePaper?.url}`)}>
                                     <a>
                                         {whitePaper?.featured_image &&
                                             <Stack as="div" className="card--image">
@@ -78,7 +79,7 @@ export const CommonBlogSection = (props: any) => {
                         {successStory &&
                             <Card padding={false} bordered highlightOnHover className="card--block">
 
-                                <Link href={`/resources/success-story${successStory?.url}`}>
+                                <Link href={changeUrl(router.query.lang,`/resources/success-story${successStory?.url}`)}>
                                     <a>
                                         {successStory?.hero_image &&
                                             <Stack as="div" className="card--image">
@@ -99,7 +100,7 @@ export const CommonBlogSection = (props: any) => {
                         }
                         {webinar &&
                             <Card padding={false} bordered highlightOnHover className="card--block">
-                                <Link href={`/resources/webinar${webinar?.url}`}>
+                                <Link href={changeUrl(router.query.lang,`/resources/webinar${webinar?.url}`)}>
                                     <a>
                                         {webinar?.choose_categories &&
                                             <Stack as="div" className="card--image">

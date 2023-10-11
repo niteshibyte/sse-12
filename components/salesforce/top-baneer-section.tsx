@@ -2,6 +2,8 @@ import { Button, Container, List, Select, Stack, Text, Textfield, useBreakpoints
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 type config = {
     variant: "heading-3" | "heading-5";
@@ -10,7 +12,7 @@ type config = {
 
 export const SalesForceTopSection = () => {
     const { salesforce }: any = useSelector((state: any) => state)
-
+const router=useRouter()
     const { matches, value } = useBreakpointsConfig<config>({
         lg: { variant: "heading-3", direction: "row" },
         xl: { variant: "heading-3", direction: "row" },
@@ -28,7 +30,7 @@ export const SalesForceTopSection = () => {
                         <Stack as="div" className="salesforce--header" wrap direction="row" vAlign="start" hAlign="space-between" rowGap={64} columnGap={64}>
                             <Stack as="div" className="salesforce--hero--left" direction={value.direction} vAlign="start" rowGap={24} columnGap={24}>
                                 <Stack className="salesforce--logo" as="div">
-                                    <Link href='/'>
+                                    <Link href={changeUrl(router.query.lang,'/')}>
                                         <div dangerouslySetInnerHTML={htmlToTextConvert(salesforce?.svg_logo)} />
                                     </Link>
                                 </Stack>

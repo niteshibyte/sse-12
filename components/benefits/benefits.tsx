@@ -3,7 +3,10 @@ import { ProductTabs } from "../card--contents/product-tabs";
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const Benefits = () => {
+    const router=useRouter()
     const { section_three }: any = useSelector((state: any) => state?.homeData)
     return (
         <>
@@ -19,7 +22,7 @@ export const Benefits = () => {
                             <Stack as="div" direction="column" rowGap={24}>
                                 <ProductTabs ></ProductTabs>
                                 <Stack direction="column" wrap hAlign="center" className="mt-8">
-                                    <Link href={section_three?.button_name?.href}>
+                                    <Link href={changeUrl(router.query.lang,`${section_three?.button_name?.href}`)}>
                                         <Button kind="primary" dimension="big"  >{section_three?.button_name?.title}</Button>
                                     </Link>
                                 </Stack>

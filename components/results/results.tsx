@@ -4,11 +4,14 @@ import { useSelector } from "react-redux";
 import { Carousel } from "@trendyol-js/react-carousel";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 type config = {
     variant: "display-3" | "heading-3";
     vPadding: "64" | "96" | "128";
 }
 export const Results = () => {
+    const router=useRouter()
     const {matches, value} = useBreakpointsConfig<config>({
         md: {variant: "heading-3", vPadding: "96"},
         lg: {variant: "display-3", vPadding: "128"},
@@ -44,7 +47,7 @@ export const Results = () => {
                                     {section_four?.side_slider?.success_stories?.length > 0 && section_four?.side_slider?.success_stories?.map((item: any, index: number) => {
                                         return (
                                             <Stack key={index} >
-                                                <Link href={`/resources/success-story${item?.url}`}>
+                                                <Link href={changeUrl(router.query.lang,`/resources/success-story${item?.url}`)}>
                                                     <a>
                                                         <Stack as="div" className="stack--image">
                                                             <img src={item?.hero_image?.url} alt={item?.hero_image?.title} />
@@ -59,7 +62,7 @@ export const Results = () => {
                             </Stack>
                         </Stack>
                         <Stack direction="column" hAlign="center" className="mt-8">
-                            <Link href={section_four?.button_name_4?.href}>
+                            <Link href={changeUrl(router.query.lang,section_four?.button_name_4?.href)}>
                                 <Button kind="primary" dimension="big"  >{section_four?.button_name_4?.title}</Button>
 
                             </Link>

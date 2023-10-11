@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { SectionHead } from "../../section-head/section-head";
 import { CardSlider } from "../../image-card-slider/card-slider";
 import Loader from "../../loader/Loader";
+import { changeUrl } from "../../../helper/ChangeLanguage";
 export const RecentWebinar = () => {
     const [data, setData] = useState<any>()
     const [loader, setLoader] = useState(true)
@@ -55,7 +56,7 @@ export const RecentWebinar = () => {
                             <Carousel show={3} slide={1} transition={0.5} >
                                 {data && data?.length > 0 && data?.map((item: any, index: number) => {
                                     return (
-                                        <Link href={`/resources/webinar/webinar-view?title=${item?.title}`}>
+                                        <Link href={changeUrl(router.query.lang,`/resources/webinar/webinar-view?title=${item?.title}`)}>
 
                                             <CardSlider
                                                 key={index}

@@ -2,7 +2,10 @@ import { Carousel } from "@trendyol-js/react-carousel";
 import { Container, Stack, Text } from "@wonderflow/react-components";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const MegaMenuFooter = () => {
+    const router=useRouter()
     const { header } = useSelector((state: any) => state)
     return (
         <Container dimension="full" padding={false} className="mega--menu--footer mt-10">
@@ -31,7 +34,7 @@ export const MegaMenuFooter = () => {
                         </Stack>
                         <Text as="h3" variant="heading-3">{header?.bottom_bar_menu?.plain_title_text} <Text as="span" variant="heading-3">{header?.bottom_bar_menu?.highlighted_text}</Text></Text>
                         <Stack maxWidth="fit-content" as="div" hAlign="end">
-                            <Link href={header?.bottom_bar_menu?.button_url?.href}><a className="primaryBtn button">{header?.bottom_bar_menu?.button_url?.title}</a></Link>
+                            <Link href={changeUrl(router.query.lang,header?.bottom_bar_menu?.button_url?.href)}><a className="primaryBtn button">{header?.bottom_bar_menu?.button_url?.title}</a></Link>
                         </Stack>
                     </Stack>
                 </Container>

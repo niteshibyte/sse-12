@@ -2,8 +2,10 @@ import { Button, Container, Stack } from "@wonderflow/react-components";
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 export const GetStartedView = () => {
-    const { becomeapartner }: any = useSelector((state) => state)
+   const router=useRouter()
     return (
         <>
             <Container dimension="extra-large">
@@ -26,7 +28,7 @@ export const GetStartedView = () => {
 
                             {/* Button */}
                             <Stack as="div" direction="column" hAlign="center">
-                                <Link href="/become-a-partner">
+                                <Link href={changeUrl(router.query.lang,"/become-a-partner")}>
                                     <Button kind="primary" dimension="big"  >Become a partner</Button>
 
                                 </Link>

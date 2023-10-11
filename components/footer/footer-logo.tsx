@@ -5,8 +5,11 @@ import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import { footerLogo } from "../../interface/footer";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 
 export const FooterLogo = () => {
+    const router=useRouter()
     const [data, setData] = useState<footerLogo>()
     const footer = useSelector((state: any) => state?.footer);
 
@@ -16,7 +19,7 @@ export const FooterLogo = () => {
     return (
         <Stack className="footer--small--print" rowGap={16}>
             <Stack className="footer--logo">
-                <Link href='/'><img src={data?.logo?.url} alt={data?.logo?.title} /></Link>
+                <Link href={changeUrl(router.query.lang,'/')}><img src={data?.logo?.url} alt={data?.logo?.title} /></Link>
             </Stack>
             <Text as="h3" variant="heading-3"><div dangerouslySetInnerHTML={htmlToTextConvert(data?.newsletter_form_text)} className="fs-32" /></Text>
             <NewsLetter></NewsLetter>

@@ -3,7 +3,10 @@ import { Container, Stack,  Text, Button } from "@wonderflow/react-components";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const ReportInfo = () => {
+    const router=useRouter()
     const { main_section } = useSelector((state: any) => state?.analystsingle)
     return (
         <>
@@ -41,7 +44,7 @@ export const ReportInfo = () => {
                         </Stack>
                     </Stack>
                     <Stack direction="column" hAlign="center" vAlign="center">
-                        <Link href={main_section?.report_link?.href}>
+                        <Link href={changeUrl(router.query.lang,main_section?.report_link?.href)}>
                             <Button kind="primary" dimension="big"  >{main_section?.report_link?.title}</Button>
 
                         </Link>

@@ -1,8 +1,11 @@
 import { Button, Container, Stack, Text } from "@wonderflow/react-components";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const CustomerFeedback = () => {
+    const router=useRouter()
     const { about }: any = useSelector((state) => state)
 
     return (
@@ -15,7 +18,7 @@ export const CustomerFeedback = () => {
                                 <Text variant="subtitle-1" textAlign="center" className="text--medium">{about?.promotional_banner_section?.section_description_promotional}</Text>
                                 <Text variant="display-4" textAlign="center">{about?.promotional_banner_section?.section_title_promotional}</Text>
                                 <Stack direction="column" hAlign="center">
-                                    <Link href={about?.promotional_banner_section?.button_name?.href}>
+                                    <Link href={changeUrl(router.query.lang,`${about?.promotional_banner_section?.button_name?.href}`)}>
                                         <Button kind='primary' dimension="big"  >{about?.promotional_banner_section?.button_name?.title}</Button>
                                     </Link>
                                 </Stack>

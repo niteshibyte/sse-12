@@ -1,10 +1,13 @@
 import { Card, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { changeUrl } from "../../helper/ChangeLanguage"
 export const WebinarResource = (props: any) => {
+    const router=useRouter()
     return (
         <Card padding={false} bordered highlightOnHover className="card--block">
 
-            <Link href={`/resources/webinar${props?.item?.url}`}>
+            <Link href={changeUrl(router.query.lang,`/resources/webinar${props?.item?.url}`)}>
                 <a>
 
                     {props?.item?.choose_categories?.length > 0 &&

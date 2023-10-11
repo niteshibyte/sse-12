@@ -1,11 +1,14 @@
 import { Card, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { changeUrl } from "../../helper/ChangeLanguage"
 
 
 export const AnalyticsResource = (props: any) => {
+    const router=useRouter()
     return (
         <Card padding={false} bordered highlightOnHover className="card--block">
-            <Link href={`/resources/analyst-report${props?.item?.url}`}>
+            <Link href={changeUrl(router.query.lang,`/resources/analyst-report${props?.item?.url}`)}>
                 <a>
                     {props?.item?.main_section?.report_image &&
                         <Stack as="div" className="card--image">

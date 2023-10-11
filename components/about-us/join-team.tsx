@@ -2,8 +2,11 @@ import { Button, Container, Stack } from "@wonderflow/react-components";
 import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const JoinTeam = () => {
+    const router=useRouter()
     const { about }: any = useSelector((state) => state)
     return (
         <>
@@ -27,7 +30,7 @@ export const JoinTeam = () => {
 
                             {/* Button */}
                             <Stack as="div" direction="column" hAlign="center" className="mt-6">
-                                <Link href={about?.promotion_banner_2?.button_name?.href}>
+                                <Link href={changeUrl(router.query.lang,`${about?.promotion_banner_2?.button_name?.href}`)}>
                                     <Button kind='primary' dimension="big"  >{about?.promotion_banner_2?.button_name?.title}</Button>
                                 </Link>
                             </Stack>

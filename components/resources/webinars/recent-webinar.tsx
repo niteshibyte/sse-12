@@ -4,7 +4,10 @@ import { CardSlider } from "../../../components/image-card-slider/card-slider";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loader from "../../loader/Loader";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const RecentWebinar = ({recentData}:{recentData:any}) => {
+  const router=useRouter()
   const [data, setData] = useState<any>();
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -48,7 +51,7 @@ export const RecentWebinar = ({recentData}:{recentData:any}) => {
                     return (
                       <Stack as="div" className="card--block">
                         <Link
-                          href={`/resources/webinar${item?.url}`}
+                          href={changeUrl(router.query.lang,`/resources/webinar${item?.url}`)}
                         >
                           <a>
                             <CardSlider

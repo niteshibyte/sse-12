@@ -1,9 +1,12 @@
 import { Card, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { changeUrl } from "../../helper/ChangeLanguage"
 export const BlogResources = (props: any) => {
+    const router=useRouter()
     return (
         <Card padding={false} bordered highlightOnHover className="card--block">
-            <Link href={`/blog${props?.item?.url}`}>
+            <Link href={changeUrl(router.query.lang,`/blog${props?.item?.url}`)}>
                 <a>
 
                     {props?.item?.blog_image &&

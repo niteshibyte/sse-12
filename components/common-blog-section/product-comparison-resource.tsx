@@ -1,9 +1,12 @@
 import { Card, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { changeUrl } from "../../helper/ChangeLanguage"
 export const ProductComparisonResource = (props: any) => {
+    const router=useRouter()
     return (
         <Card padding={false} bordered highlightOnHover className="card--block">
-            <Link href={`/business-intelligence/product-comparison${props?.item?.url}`}>
+            <Link href={changeUrl(router.query.lang,`/business-intelligence/product-comparison${props?.item?.url}`)}>
                 <a>
                     {props?.item?.banner_section?.banner_image&&
                         <Stack as="div" className="card--image">

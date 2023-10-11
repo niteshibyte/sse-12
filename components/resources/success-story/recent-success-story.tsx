@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { SectionHead } from "../../section-head/section-head";
 import { CardSlider } from "../../image-card-slider/card-slider";
 import Loader from "../../loader/Loader";
+import { changeUrl } from "../../../helper/ChangeLanguage";
 export const RecentWhitePaper = () => {
     const [id, setId] = useState('')
     const [data, setData] = useState<any>()
@@ -62,7 +63,7 @@ export const RecentWhitePaper = () => {
                             <Carousel show={3} slide={1} transition={0.5} >
                                 {data && data?.map((item: any, index: number) => {
                                     return (
-                                        <Link href={`/resources/whitepaper/whitepaper-view?title=${item?.title}`}>
+                                        <Link href={changeUrl(router.query.lang,`/resources/whitepaper/whitepaper-view?title=${item?.title}`)}>
 
                                             <CardSlider
                                                 key={index}

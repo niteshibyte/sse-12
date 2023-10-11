@@ -2,8 +2,11 @@ import { Button, Container, Stack, Text } from "@wonderflow/react-components";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 
 export const AboutBanner = () => {
+    const router=useRouter()
     const { about }: any = useSelector((state) => state)
     return (
         <>
@@ -16,7 +19,7 @@ export const AboutBanner = () => {
                             <Text as="p" variant="tagline-1" textAlign="center" className="mt-8 text--normal"><div dangerouslySetInnerHTML={htmlToTextConvert(about?.hero_banner?.banner_description)} /></Text>
                         </Stack>
                         <Stack as="div" direction="column" wrap hAlign="center" className="mt-10">
-                            <Link href={about?.hero_banner?.banner_cta?.href}>
+                            <Link href={changeUrl(router.query.lang,`${about?.hero_banner?.banner_cta?.href}`)}>
                                 <Button kind="primary" dimension="big"  >{about?.hero_banner?.banner_cta?.title}</Button>
                             </Link>
                         </Stack>

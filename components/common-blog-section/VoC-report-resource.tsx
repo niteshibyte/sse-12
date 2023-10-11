@@ -1,9 +1,12 @@
 import { Card, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
+import { changeUrl } from "../../helper/ChangeLanguage"
+import { useRouter } from "next/router"
 export const VoCReportResource = (props: any) => {
+    const router=useRouter()
     return (
         <Card padding={false} bordered highlightOnHover className="card--block">
-            <Link href={`/business-intelligence/voc-reports${props?.item?.url}`}>
+            <Link href={changeUrl(router.query.lang,`/business-intelligence/voc-reports${props?.item?.url}`)}>
                 <a>
                     {props?.item?.thumnail &&
                         <Stack as="div" className="card--image">

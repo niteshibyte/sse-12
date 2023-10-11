@@ -1,7 +1,10 @@
 import React from 'react'
 import { Container, Stack, Text } from "@wonderflow/react-components";
 import Link from 'next/link';
+import { changeUrl } from '../../helper/ChangeLanguage';
+import { useRouter } from 'next/router';
 export default function ThankYou() {
+    const router=useRouter()
     return (
         <>
             <>
@@ -19,7 +22,7 @@ export default function ThankYou() {
                                         <Text variant="body-2" className='fs-18 emText mt-8'>If you don't see any mail from us, please check also your spam folder.</Text>
                                         <Text variant="body-2" className='fs-18 mt-4 text--dark'>Learn how the top brands use consumer feedback to become more consumer centric.</Text>
                                         <Stack direction="column" hAlign="start" vAlign="center" vPadding={16} className='mt-4'>
-                                            <Link className="" href="/blog"><a className="primaryBtn">Read our blog</a></Link>
+                                            <Link className="" href={changeUrl(router.query.lang,'/blog')}><a className="primaryBtn">Read our blog</a></Link>
                                         </Stack>
                                     </Stack>
                                 </Stack>

@@ -3,12 +3,15 @@ import { Button, Container, Stack, Text, useBreakpointsConfig } from "@wonderflo
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 type config = {
     variant: "heading-2" | "display-4";
     vPadding: "64" | "96" | "128";
 }
 
 export const Standard = () => {
+    const router=useRouter()
     const { section_8_promotional }: any = useSelector((state: any) => state?.homeData)
 
     const { matches, value } = useBreakpointsConfig<config>({
@@ -28,7 +31,7 @@ export const Standard = () => {
                                 <Text as="h2" variant={value.variant} textAlign="center"><div dangerouslySetInnerHTML={htmlToTextConvert(section_8_promotional?.short_title)} /></Text>
                                 <Text variant="subtitle-1" textAlign="center" className="mt-4"><div dangerouslySetInnerHTML={htmlToTextConvert(section_8_promotional?.main_title)} /></Text>
                                 <Stack direction="column" hAlign="center" className="mt-40">
-                                    <Link href={section_8_promotional?.button_name?.href}>
+                                    <Link href={changeUrl(router.query.lang,section_8_promotional?.button_name?.href)}>
                                         <Button kind="primary" dimension="big"  >{section_8_promotional?.button_name?.title}</Button>
 
                                     </Link>

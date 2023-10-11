@@ -2,8 +2,11 @@ import { Card, Container, Stack, Text } from "@wonderflow/react-components";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import NoDataFound from "../no-data-found/no-data-found";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 
 export const BiProductComparisonList = () => {
+    const router=useRouter()
     const { more_comparisons,types }: any = useSelector((state: any) => state?.singleproduct)
     return(
         <>
@@ -15,7 +18,7 @@ export const BiProductComparisonList = () => {
                                 {more_comparisons?.map((data:any, index:number) => {
                                     return(
                                         <Stack className="card--block">
-                                        <Link href={`/business-intelligence/product-comparison${data?.url}`}>
+                                        <Link href={changeUrl(router.query.lang,`${`/business-intelligence/product-comparison${data?.url}`}`)}>
                                         <a>
 
                                         <Card key={index} bordered highlightOnHover radius={16} padding={false} className="overflow-hidden">

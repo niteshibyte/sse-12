@@ -3,10 +3,12 @@ import { SectionHead } from "../../section-head/section-head";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import NoDataFound from "../../no-data-found/no-data-found";
+import { changeUrl } from "../../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 export const BiRecentVocReports = () => {
     const { other_voc_reports } = useSelector((state: any) => state?.singlereport)
-
+const router=useRouter()
     return (
         <>
             <Container dimension="extra-large" className="bi--page--prod--comp--list mt-128">
@@ -21,7 +23,7 @@ export const BiRecentVocReports = () => {
                                     if(index<3){
                                     return (
                                         <Stack as="div" className="card--block">
-                                            <Link href={`/business-intelligence/voc-reports${data?.url}`}>
+                                            <Link href={changeUrl(router.query.lang,`${`/business-intelligence/voc-reports${data?.url}`}`)}>
                                                 <a>
                                                     <Card radius={16} bordered highlightOnHover key={index} padding={false} className="overflow-hidden">
                                                         {(data?.download_report_section?.background_image||data?.thumnail?.url) &&

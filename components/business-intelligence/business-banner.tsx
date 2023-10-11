@@ -3,7 +3,10 @@ import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 export const BusinessBanner = () => {
+    const router=useRouter()
     const {bipage}=useSelector((state:any)=>state)
     return(
         <>
@@ -27,7 +30,7 @@ export const BusinessBanner = () => {
 
                             {/* Banner Card */}
                             {bipage?.select_popular_banner_report?.length>0 &&<Elevator resting={1} hover={4} className="banner--card">
-                               <Link href={bipage?.select_popular_banner_report[0]?.type=='productcomparison'?`/business-intelligence/product-comparison${bipage?.select_popular_banner_report[0]?.url}`:`/business-intelligence/voc-reports${bipage?.select_popular_banner_report[0]?.url}`}>
+                               <Link href={changeUrl(router.query.lang,`${bipage?.select_popular_banner_report[0]?.type=='productcomparison'?`/business-intelligence/product-comparison${bipage?.select_popular_banner_report[0]?.url}`:`/business-intelligence/voc-reports${bipage?.select_popular_banner_report[0]?.url}`}`)}>
                                <a>
 
                                <Card padding={false} highlightOnHover className="mt-16 overflow-hidden">

@@ -1,10 +1,12 @@
 import { Container, List, Select, Stack, Text } from "@wonderflow/react-components"
 import Link from "next/link"
 import { useSelector } from "react-redux"
+import { changeUrl } from "../../helper/ChangeLanguage"
+import { useRouter } from "next/router"
 
 export const SalesforceFooter = () => {
     const { footer }: any = useSelector((state: any) => state?.salesforce)
-
+const router=useRouter()
     return (
         <>
             {footer && <Container dimension="full" className="salesforce--footer--bg">
@@ -23,7 +25,7 @@ export const SalesforceFooter = () => {
                                 {footer?.name?.length > 0 && footer?.name?.map((item: any, index: number) => {
                                     return (
                                         <List.Li key={index}>
-                                            <Link href={item?.href}>{item?.title}</Link>
+                                            <Link href={changeUrl(router.query.lang,item?.href)}>{item?.title}</Link>
                                         </List.Li>
                                     )
                                 })}

@@ -3,7 +3,10 @@ import { SectionHead } from "../section-head/section-head";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 export const VocIntelligence = () => {
+    const router=useRouter()
     const [newsletter, setNewsletter] = useState<any>({})
     const industryPageData = useSelector((state: any) => state?.industry?.industry_page_Data
     );
@@ -33,7 +36,7 @@ export const VocIntelligence = () => {
 
                         {/* Button */}
                         <Stack as="div" direction="column" hAlign="center" className="mt-6">
-                        <Link href={newsletter?.button_text?.href}>
+                        <Link href={changeUrl(router.query.lang,newsletter?.button_text?.href)}>
                             <Button kind='primary' dimension="big"  >{newsletter?.button_text?.title}</Button>
                         </Link>
                         </Stack>

@@ -4,6 +4,8 @@ import { Button, Container, Stack, Text, useBreakpointsConfig } from "@wonderflo
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import Html_React_Parser from "../../helper/html-parser";
+import { useRouter } from "next/router";
+import { changeUrl } from "../../helper/ChangeLanguage";
 
 
 type config = {
@@ -12,6 +14,7 @@ type config = {
 }
 
 export const Banner = () => {
+    const router=useRouter()
     const { home_banner
     }: any = useSelector((state: any) => state?.homeData)
 
@@ -38,7 +41,7 @@ export const Banner = () => {
                             {Html_React_Parser(home_banner?.banner_description)}
                         </Text>
                         <Stack direction="column" hAlign="center" vAlign="center">
-                            <Link href={home_banner?.banner_cta?.href}>
+                            <Link href={changeUrl(router.query.lang,`${home_banner?.banner_cta?.href}`)}>
                                 <Button kind="primary" dimension="big"  >{home_banner?.banner_cta?.title}</Button>
                             </Link>
                         </Stack>

@@ -3,6 +3,8 @@ import { SectionHead } from "../section-head/section-head";
 import { useSelector } from "react-redux";
 import htmlToTextConvert from "../../helper/htmlToTextConvert";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 
 type config = {
@@ -10,7 +12,7 @@ type config = {
 }
 
 export const TouchPointFAQ = () => {
-
+const router=useRouter()
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "64" },
         lg: { rowGap: "64" },
@@ -33,7 +35,7 @@ export const TouchPointFAQ = () => {
                             </Stack>
                             <Stack as="div" direction="row" vAlign="center" hAlign="space-between" vPadding={24} hPadding={24} rowGap={16} columnGap={32} className="faq--image--content mt-12">
                                 <Text as="h5" variant="heading-5">{faq_section?.image_text}</Text>
-                                <Link href={faq_section?.button?.href}>
+                                <Link href={changeUrl(router.query.lang,faq_section?.button?.href)}>
                                     <Button kind='primary' dimension="big"  >{faq_section?.button?.title}</Button>
 
                                 </Link>

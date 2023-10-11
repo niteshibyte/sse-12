@@ -2,13 +2,15 @@ import { Button, Container, Stack, Text, useBreakpointsConfig } from "@wonderflo
 import { useSelector } from "react-redux";
 import { DepartmentMediaSections } from "../departments/department-sections/sections-media";
 import Link from "next/link";
+import { changeUrl } from "../../helper/ChangeLanguage";
+import { useRouter } from "next/router";
 
 type config = {
     vPadding: "64" | "128",
 }
 
 export const CustomerElectronics = () => {
-
+const router=useRouter()
     const { matches, value } = useBreakpointsConfig<config>({
         md: { vPadding: "128" },
         lg: { vPadding: "128" },
@@ -54,7 +56,7 @@ export const CustomerElectronics = () => {
 
                         {/* Button */}
                         <Stack as="div" direction="column" hAlign="center" className="mt-16 feedback--button">
-                        <Link href={promotional_banner_touchpoint?.buttonsuccess?.href}>
+                        <Link href={changeUrl(router.query.lang,promotional_banner_touchpoint?.buttonsuccess?.href)}>
                             <Button kind='primary' dimension="big"  >{promotional_banner_touchpoint?.buttonsuccess?.title}</Button>
 
                         </Link>
