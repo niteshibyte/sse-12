@@ -57,13 +57,18 @@ export default function Home({data}:{data:any}) {
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
           <Head>
 
-            <title>{data?.seo_tags?.meta_title}</title>
+            {/* <title>{data?.seo_tags?.meta_title}</title>
             <meta name="description" content={data?.seo_tags?.meta_description} />
             <meta name="keywords" content={data?.seo_tags?.keywords} />
             <meta property="og:title" content={data?.seo_tags?.meta_title} />
             <meta property="og:site_name" content='Wonderflow'></meta>
             <meta property="og:description" content={data?.seo_tags?.meta_description} />
-            <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} />
+            <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} /> */}
+            <meta property="og:image" itemProp="image" content= {data?.seo_tags?.meta_description} />
+<meta property="og:image:secure_url" content={data?.seo_tags?.meta_description} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="500" />
+<meta property="og:image:height" content="400" />
           </Head>
           <Header />
           <Banner  />
