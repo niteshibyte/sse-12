@@ -1,4 +1,4 @@
-'use client';
+
 
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
@@ -13,38 +13,23 @@ import { SalesforceFooter } from '../../../components/salesforce/salesforce-foot
 import { useRouter } from 'next/router';
 import Loader from '../../../components/loader/Loader';
 
-export default function SalesForcePage() {
+export default function SalesForcePage({data}:{data:any}) {
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch()
     const router = useRouter()
 
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
-        if (router?.query?.title) {
-            getMarketingPage2(`/${router?.query?.title}`);
-
-        }
-
-
-    }, [router?.query?.title])
-    const getMarketingPage2 = async (title: string) => {
-        try {
-            const data: any = await stackWrapper.salesForceData('banner_page', title)
-            if (data[0]?.length > 0) {
-                dispatch(SETSALESFORCE(data[0][0]))
-                setLoader(false)
-            } else {
-                router.push('/404')
-
-            }
-
-
-        } catch (error) {
+        if (data[0]?.length > 0) {
+            dispatch(SETSALESFORCE(data[0][0]))
             setLoader(false)
+        } else {
+            router.push('/404')
 
         }
 
-    }
+    }, [data])
+   
 
     return (
         <>
@@ -56,3 +41,12 @@ export default function SalesForcePage() {
         </>
     )
 }
+
+export const getServerSideProps = async (context: any) => {
+    const data = await stackWrapper.salesForceData('banner_page', context.query.title, context.query.lang)
+    return {
+      props: {
+        data,
+      },
+    };
+  }

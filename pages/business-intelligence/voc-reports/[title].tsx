@@ -1,5 +1,3 @@
-'use client';
-
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import {  Stack, useBreakpointsConfig } from '@wonderflow/react-components';
@@ -22,35 +20,22 @@ type config = {
     rowGap: "64" | "128";
 }
 
-export default function ProductComparison() {
+export default function ProductComparison({data}:{data:any}) {
     const router = useRouter()
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch()
-    const [data,setData]=useState<any>()
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
-        if (router?.query?.title) {
-            getVocReport(`${router?.query?.title}`)
-        }
-
-
-    }, [router?.query?.title])
-    const getVocReport = async (title: string) => {
-        try {
-            const data: any = await stackWrapper.getSingleReport("voc_report_entries", title)
-            if (data?.length > 0 && data[0]?.length > 0) {
-                dispatch(SETSINGLEREPORT(data[0][0]))
-                setData(data[0][0])
-                setLoader(false)
-            } else {
-                router.push('/404')
-            }
-
-        } catch (error) {
+        if (data?.length > 0 && data[0]?.length > 0) {
+            dispatch(SETSINGLEREPORT(data[0][0]))
+            setLoader(false)
+        } else {
             router.push('/404')
-
         }
-    }
+
+
+    }, [data])
+   
 
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "128" },
@@ -81,4 +66,14 @@ export default function ProductComparison() {
             </Stack> : <Loader height='100vh' width='100vw' />}
         </>
     );
+}
+
+export const getServerSideProps = async (context: any) => {
+    const data = await stackWrapper.getSingleReport("voc_report_entries", context.query.title, context.query.lang)
+    return {
+        props: {
+            data,
+        },
+
+    };
 }

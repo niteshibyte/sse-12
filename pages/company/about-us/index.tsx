@@ -1,7 +1,7 @@
-'use client';
+
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import { Container, Spinner, Stack, useBreakpointsConfig } from '@wonderflow/react-components';
+import {  Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import { Header } from '../../../components/header/header';
 import { Footer } from '../../../components/footer/footer';
 import { AboutBanner } from '../../../components/about-us/about-banner';
@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import stackWrapper from '../../../helper/api'
 import { useDispatch } from 'react-redux';
 import { SETABOUTUS } from '../../../reducer/about';
-import { useSelector } from 'react-redux';
+
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
 

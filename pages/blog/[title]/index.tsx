@@ -1,6 +1,6 @@
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import {  Stack } from '@wonderflow/react-components';
+import { Stack } from '@wonderflow/react-components';
 import { useEffect, useState } from 'react';
 import { Header } from '../../../components/header/header';
 import { SingleBlogView } from '../../../components/blog/single-blog/single-blog-view';
@@ -11,25 +11,25 @@ import { useDispatch } from 'react-redux';
 import { SETBLOGSINGLE } from '../../../reducer/blogsingle';
 import Loader from '../../../components/loader/Loader';
 
-export default function blog({data,recent}:{data:any,recent:any}) {
+export default function blog({ data, recent }: { data: any, recent: any }) {
   const [loader, setLoader] = useState(true)
   const router = useRouter()
-  const dispatch=useDispatch()
- useEffect(()=>{
-      if (data?.length > 0 && data[0]?.length > 0) {
-        dispatch(SETBLOGSINGLE(data[0][0]))
-        setLoader(false)
-      } else {
-        router.push('/404')
-        setLoader(false)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (data?.length > 0 && data[0]?.length > 0) {
+      dispatch(SETBLOGSINGLE(data[0][0]))
+      setLoader(false)
+    } else {
+      router.push('/404')
+      setLoader(false)
 
-      }
- },[router])
+    }
+  }, [router])
 
   return (
     <>
- 
-       {!loader ? 
+
+      {!loader ?
         <Stack as="div">
           {/* <Head>
             <title>{blog?.seo_tags?.meta_title}</title>
@@ -45,19 +45,19 @@ export default function blog({data,recent}:{data:any,recent:any}) {
             <SingleBlogView data={recent} />
           </Stack>
           <Footer />
-        </Stack>:<Loader height='100vh' width='100vw' />}
-        
+        </Stack> : <Loader height='100vh' width='100vw' />}
+
     </>
   )
 }
-export const getServerSideProps = async (context:any) => {
-  const data= await stackWrapper.getSingleBlog('blog_entries', context.query.title,`${context.query.lang}`)
-  const recent=await stackWrapper.getNotInBlog('blog_entries',context.query.title,`${context.query.lang}`)
+export const getServerSideProps = async (context: any) => {
+  const data = await stackWrapper.getSingleBlog('blog_entries', context.query.title, `${context.query.lang}`)
+  const recent = await stackWrapper.getNotInBlog('blog_entries', context.query.title, `${context.query.lang}`)
   return {
-   props: {
-     data,
-     recent:recent
-   },
-   
- };
- }
+    props: {
+      data,
+      recent: recent
+    },
+
+  };
+}

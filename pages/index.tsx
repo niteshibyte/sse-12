@@ -3,7 +3,7 @@ import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import "animate.css";
 import { useEffect, useState } from 'react';
-import { Stack, useBreakpointsConfig } from "@wonderflow/react-components";
+import { Button, Container, Spinner, Stack, useBreakpointsConfig } from "@wonderflow/react-components";
 import { useDispatch } from 'react-redux';
 import stackWrapper from '../helper/api'
 import { useSelector } from 'react-redux';
@@ -24,16 +24,16 @@ import { HomeResource } from '../components/home/resources';
 import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
 import { Header } from '../components/header/header';
-import { NextSeo } from 'next-seo';
+
 export default function Home({ data }: { data: any }) {
   const dispatch = useDispatch()
   const router = useRouter()
-  console.log(data?.section_8_promotional?.hero_image?.url)
   useEffect(() => {
     document.body.classList.remove("mega--menu--open")
     dispatch(SETHOMEDATA(data))
-  }, [router])
+  }, [data])
   const [loader, setLoader] = useState(false)
+  const { homeData }: any = useSelector((state) => state)
 
 
   type config = {
@@ -53,41 +53,18 @@ export default function Home({ data }: { data: any }) {
 
   return (
     <>
-    <NextSeo
-      title="Using More of Config"
-      description="This example uses more of the available config options."
-      canonical="https://www.canonical.ie/"
-      openGraph={{
-        url: 'https://fanciful-youtiao-0aec04.netlify.app/',
-        title: 'Open Graph Title',
-        description: 'Open Graph Description',
-        images: [
-          {
-            url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg',
-            width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          },
-          
-        ],
-       
-      }}
-    
-    />
-      {/* <Head>
-
-        <title>{data?.seo_tags?.meta_title}</title>
-        <meta name="description" content={data?.seo_tags?.meta_description} />
-        <meta name="keywords" content={data?.seo_tags?.keywords} />
-        <meta property="og:title" content={data?.seo_tags?.meta_title} />
-        <meta property="og:site_name" content='Wonderflow'></meta>
-        <meta property="og:description" content={data?.seo_tags?.meta_description} />
-        <meta property="og:image" content='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg' />
-      </Head> */}
       {!loader ? <>
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
+          <Head>
 
+            <title>{homeData?.seo_tags?.meta_title}</title>
+            <meta name="description" content={homeData?.seo_tags?.meta_description} />
+            <meta name="keywords" content={homeData?.seo_tags?.keywords} />
+            <meta property="og:title" content={homeData?.seo_tags?.meta_title} />
+            <meta property="og:site_name" content='Wonderflow'></meta>
+            <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
+            <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
+          </Head>
           <Header />
           <Banner />
           <PartnerLogos />

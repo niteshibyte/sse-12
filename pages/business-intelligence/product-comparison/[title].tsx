@@ -1,10 +1,6 @@
-'use client';
-
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-
 import {  Stack, useBreakpointsConfig } from '@wonderflow/react-components';
-
 import { useEffect, useState } from 'react';
 import { Header } from '../../../components/header/header';
 import { BiTopSection } from '../../../components/business-intelligence/top-section';
@@ -24,41 +20,25 @@ type config = {
     rowGap: "64" | "128";
 }
 
-export default function ProductComparison() {
+export default function ProductComparison({data}:{data:any}) {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
     const router = useRouter()
-    const [data, setData] = useState<any>()
+   
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
-
-    }, [])
-
-    useEffect(() => {
-        setLoading(true)
-        if (router?.query?.title) {
-            GetProduct(`${router?.query?.title}`)
-        }
-    }, [router?.query?.title])
-
-    const GetProduct = async (url: string) => {
-        try {
-            const data: any = await stackWrapper.getSingleProductComperisions('product_comparison_entries', url)
-            if (data?.length && data[0]?.length > 0) {
-                dispatch(SETSINGLEPRODUCT(data[0][0]))
-                setData(data[0][0])
-                setLoading(false)
-            } else {
-                router.push('/404')
-            }
-
-
-        } catch (error) {
+        if (data?.length && data[0]?.length > 0) {
+            dispatch(SETSINGLEPRODUCT(data[0][0]))
+            setLoading(false)
+        } else {
             router.push('/404')
-
         }
-    }
 
+    }, [data])
+
+   
+
+  
 
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "128" },
@@ -93,4 +73,13 @@ export default function ProductComparison() {
                 </Stack></>}
         </>
     );
+}
+export const getServerSideProps = async (context: any) => {
+    const data = await stackWrapper.getSingleProductComperisions('product_comparison_entries', context.query.title, context.query.lang)
+    return {
+        props: {
+            data,
+        },
+
+    };
 }

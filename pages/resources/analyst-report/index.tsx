@@ -1,7 +1,6 @@
-
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import { Container, Spinner } from '@wonderflow/react-components';
+import { Container } from '@wonderflow/react-components';
 import { Footer } from '../../../components/footer/footer';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -12,29 +11,20 @@ import { Header } from '../../../components/header/header';
 import { AnalystSinglePage } from '../../../components/resources/analyst/analyst-single-page';
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
-export default function page() {
+export default function page({data}:{data:any}) {
 
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch();
-    const [data, setData] = useState<any>()
+   
 
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
 
-        getAnalyst()
+        dispatch(SETANALYSTPAGE(data))
+        setLoader(false)
 
-    }, [])
-    const getAnalyst = async () => {
-        try {
-            const data = await Stack.gewAnalystData("analyst_report_page", "blt4d17ce3372045bbb")
-            setData(data)
-            dispatch(SETANALYSTPAGE(data))
-            setLoader(false)
-        } catch (error) {
-            setLoader(false)
-
-        }
-    }
+    }, [data])
+   
 
     return (
         <>
@@ -63,3 +53,12 @@ export default function page() {
         </>
     )
 }
+
+export const getServerSideProps = async (context: any) => {
+    const data = await Stack.gewAnalystData("analyst_report_page", "blt4d17ce3372045bbb", context.query.lang)
+    return {
+      props: {
+        data,
+      },
+    };
+  }

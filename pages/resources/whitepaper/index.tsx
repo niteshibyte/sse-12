@@ -12,28 +12,17 @@ import { WhitePaperSinglePage } from '../../../components/resources/whitepapers/
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
 
-export default function page() {
+export default function page({data}:{data:any}) {
 
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch();
-    const [data, setData] = useState<any>()
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
+        dispatch(SETWHITEPAPERDATA(data))
+        setLoader(false)
 
-        getWebinar()
-
-    }, [])
-    const getWebinar = async () => {
-        try {
-            const data = await Stack.getWhitePaperData("whitepaper_page", "blt6f4c61851c90a696")
-            setData(data)
-            dispatch(SETWHITEPAPERDATA(data))
-            setLoader(false)
-        } catch (error) {
-            setLoader(false)
-
-        }
-    }
+    }, [data])
+    
 
     return (
         <>
@@ -58,3 +47,13 @@ export default function page() {
         </>
     )
 }
+
+
+export const getServerSideProps = async (context: any) => {
+    const data = await Stack.getWhitePaperData("whitepaper_page", "blt6f4c61851c90a696", context.query.lang)
+    return {
+      props: {
+        data,
+      },
+    };
+  }

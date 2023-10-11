@@ -2,7 +2,7 @@ import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
-import { Container, Spinner, Stack, useBreakpointsConfig } from '@wonderflow/react-components';
+import { Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import { TopSection } from '../../components/industries-page/top-section';
 import { SuccessProducts } from '../../components/industries-page/sucess-products';
 import { IndustryTeams } from '../../components/industries-page/section-teams';
@@ -10,10 +10,8 @@ import { IndustryBenefits } from '../../components/industries-page/industry-bene
 import { VocIntelligence } from '../../components/industries-page/voc-intelligence';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-
 import { SETINDUSTRYPAGEDATA } from '../../reducer/industry-page';
 import { IndustryPartnerLogo } from '../../components/industries-page/partner-logos';
-
 import { TestimonialSlider } from '../../components/industries-page/testimonial-slider';
 import StackWrapper from '../../helper/api'
 import { useRouter } from 'next/router';
@@ -31,8 +29,6 @@ export default function IndustriesPage({data}:{data:any}) {
     const pageTitle = router?.query?.title;
     const dispatch = useDispatch();
     const [loader, setLoader] = useState(true)
-    
-
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
         if (data?.length > 0 && data[0]?.length > 0) {
@@ -44,10 +40,6 @@ export default function IndustriesPage({data}:{data:any}) {
         }
 
     }, [router])
-
-
-
-
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "128" },
         lg: { rowGap: "128" },

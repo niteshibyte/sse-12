@@ -64,12 +64,12 @@ export default {
                 )
         },)
     },
-    getWhitePaperData(page: string, entry_id: string) {
+    getWhitePaperData(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["select_categories", "select_tags"])
                 .toJSON()
                 .fetch()
@@ -188,7 +188,6 @@ export default {
         },)
     },
     getNotInWhitePaper(page: string, url: string,lang:string) {
-       console.log(url)
 
         return new Promise((resolve, reject) => {
 
@@ -407,13 +406,13 @@ export default {
         },)
     },
 
-    getSuccessStoryData(page: string, entry_id: string) {
+    getSuccessStoryData(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["select_categories", "select_tags"])
                 .toJSON()
                 .fetch()
@@ -617,13 +616,13 @@ export default {
                 )
         },)
     },
-    getRequestADemo(page: string, entry_id: string) {
+    getRequestADemo(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
 
                 .includeReference(["partners_contactus"])
                 .toJSON()
@@ -638,13 +637,13 @@ export default {
                 )
         },)
     },
-    getCareer(page: string, entry_id: string) {
+    getCareer(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["partners_contactus"])
                 .toJSON()
                 .fetch()
@@ -678,13 +677,13 @@ export default {
                 )
         },)
     },
-    gewAnalystData(page: string, entry_id: string) {
+    gewAnalystData(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["select_categories", "select_reports", "select_tags"])
                 .toJSON()
                 .fetch()
@@ -778,13 +777,13 @@ export default {
                 )
         },)
     },
-    getBIPageData(page: string, entry_id: string) {
+    getBIPageData(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["body_section.select_report_type", "body_section.select_report_categories", "select_popular_banner_report"])
                 .toJSON()
                 .fetch()
@@ -853,12 +852,14 @@ export default {
         },)
     },
 
-    getSingleProductComperisions(page: string, url: string) {
+    getSingleProductComperisions(page: string, url: string,lang:string) {
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
-                .includeFallback().language(`${localStorage.getItem("lang") || 'en-us'}`).includeReference(['report_category', 'types', 'more_comparisons', 'more_comparisons.types'])
+                .includeFallback()
+                .language(lang=='undefined'?"en-us":lang)
+                .includeReference(['report_category', 'types', 'more_comparisons', 'more_comparisons.types'])
 
                 .where('url', `/${url}`)
                 .addParam('include_count', 'true')
@@ -876,12 +877,14 @@ export default {
                 )
         },)
     },
-    getSingleReport(page: string, url: string) {
+    getSingleReport(page: string, url: string,lang:string) {
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
                 .Query()
-                .includeFallback().language(`${localStorage.getItem("lang") || 'en-us'}`).includeReference(['report_category', 'types'])
+                .includeFallback()
+                .language(lang=='undefined'?"en-us":lang)
+                .includeReference(['report_category', 'types'])
                 .includeReference('other_voc_reports', 'other_voc_reports.types')
                 .where('url', `/${url}`)
                 .addParam('include_count', 'true')
@@ -979,7 +982,6 @@ export default {
         },)
     },
     getNotInBlog(page: string, url: string, lang: string) {
-        console.log(lang)
         return new Promise((resolve, reject) => {
 
             Stack.ContentType(page)
@@ -1004,13 +1006,13 @@ export default {
                 )
         },)
     },
-    getTeam(page: string, entry_id: string) {
+    getTeam(page: string, entry_id: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
                 .Entry(entry_id)
                 .includeFallback()
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .includeReference(["partners_contactus"])
                 .toJSON()
                 .fetch()
@@ -1043,7 +1045,7 @@ export default {
                 )
         },)
     },
-    adjustData(page: string, title: string) {
+    adjustData(page: string, title: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
 
@@ -1051,7 +1053,7 @@ export default {
                 .includeFallback()
                 .includeReference('partner_logo_s')
 
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .where('page_url.href', title)
                 .toJSON()
                 .find()
@@ -1065,15 +1067,13 @@ export default {
                 )
         },)
     },
-    salesForceData(page: string, title: string) {
+    salesForceData(page: string, title: string,lang:string) {
         return new Promise((resolve, reject) => {
             Stack.ContentType(page)
-
                 .Query()
                 .includeFallback()
                 .includeReference('partner_logo_s')
-
-                .language(`${localStorage.getItem("lang") || 'en-us'}`)
+                .language(lang=='undefined'?"en-us":lang)
                 .where('url', title)
                 .toJSON()
                 .find()

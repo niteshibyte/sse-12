@@ -1,4 +1,3 @@
-'use client';
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import { Stack } from '@wonderflow/react-components';

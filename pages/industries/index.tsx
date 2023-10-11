@@ -2,7 +2,7 @@ import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
-import {  Stack, useBreakpointsConfig } from '@wonderflow/react-components';
+import { Stack, useBreakpointsConfig } from '@wonderflow/react-components';
 import { TopSection } from '../../components/industries-page/top-section';
 import { SuccessProducts } from '../../components/industries-page/sucess-products';
 import { IndustryTeams } from '../../components/industries-page/section-teams';
@@ -24,7 +24,7 @@ type config = {
     rowGap: "64" | "128",
 }
 
-export default function IndustriesPage({data}:{data:any}) {
+export default function IndustriesPage({ data }: { data: any }) {
 
     const dispatch = useDispatch();
     const [loader, setLoader] = useState(true)
@@ -38,17 +38,7 @@ export default function IndustriesPage({data}:{data:any}) {
         } else {
             router.push('/404')
         }
-
-       
-
-
     }, [router])
-
-
-
-
-   
-
     const { matches, value } = useBreakpointsConfig<config>({
         md: { rowGap: "128" },
         lg: { rowGap: "128" },
@@ -83,14 +73,14 @@ export default function IndustriesPage({data}:{data:any}) {
 
                     <Footer />
                 </Stack>
-            </> :<Loader height='100vh' width='100vw' />}
+            </> : <Loader height='100vh' width='100vw' />}
         </>
     );
 }
 
 
 export const getServerSideProps = async (context: any) => {
-    const data = await StackWrapper.getIndustoryData('industry_page', 'general-industry',`${context.query.lang}`)
+    const data = await StackWrapper.getIndustoryData('industry_page', 'general-industry', `${context.query.lang}`)
     return {
         props: {
             data,

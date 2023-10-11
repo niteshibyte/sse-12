@@ -1,4 +1,3 @@
-
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
 import {  Stack } from '@wonderflow/react-components';
@@ -11,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import stackWrapper from '../../helper/api'
 import { SETCONTACTUS } from '../../reducer/contact';
-import { useSelector } from 'react-redux';
 import Head from 'next/head';
 import Loader from '../../components/loader/Loader';
 export default function ContactUs({data}:{data:any}) {

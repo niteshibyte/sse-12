@@ -11,29 +11,16 @@ import { SETSUCCESSSTORYPAGE } from '../../../reducer/successStory';
 import { SuccessStorySinglePage } from '../../../components/resources/success-story/success-story-single-page';
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
-export default function page() {
-
+export default function page({data}:{data:any}) {
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch();
-    const [data, setData] = useState<any>()
-
     useEffect(() => {
         document.body.classList.remove("mega--menu--open")
+        dispatch(SETSUCCESSSTORYPAGE(data))
+        setLoader(false)
 
-        getSuccessStory()
-
-    }, [])
-    const getSuccessStory = async () => {
-        try {
-            const data = await Stack.getSuccessStoryData("success_story_page", "bltf8e66d4e3a1a2200")
-            setData(data)
-            dispatch(SETSUCCESSSTORYPAGE(data))
-            setLoader(false)
-        } catch (error) {
-            setLoader(false)
-
-        }
-    }
+    }, [data])
+  
 
     return (
         <>
@@ -58,3 +45,12 @@ export default function page() {
         </>
     )
 }
+
+export const getServerSideProps = async (context: any) => {
+    const data = await Stack.getSuccessStoryData("success_story_page", "bltf8e66d4e3a1a2200", context.query.lang)
+    return {
+      props: {
+        data,
+      },
+    };
+  }
