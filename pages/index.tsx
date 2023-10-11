@@ -28,12 +28,12 @@ import { Header } from '../components/header/header';
 export default function Home({data}:{data:any}) {
   const dispatch=useDispatch()
   const router=useRouter()
+  console.log(data?.section_8_promotional?.hero_image?.url)
  useEffect(()=>{
   document.body.classList.remove("mega--menu--open")
   dispatch(SETHOMEDATA(data))
  },[router])
   const [loader, setLoader] = useState(false)
-  const { homeData }: any = useSelector((state) => state)
 
 
   type config = {
@@ -57,13 +57,13 @@ export default function Home({data}:{data:any}) {
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
           <Head>
 
-            <title>{homeData?.seo_tags?.meta_title}</title>
-            <meta name="description" content={homeData?.seo_tags?.meta_description} />
-            <meta name="keywords" content={homeData?.seo_tags?.keywords} />
-            <meta property="og:title" content={homeData?.seo_tags?.meta_title} />
+            <title>{data?.seo_tags?.meta_title}</title>
+            <meta name="description" content={data?.seo_tags?.meta_description} />
+            <meta name="keywords" content={data?.seo_tags?.keywords} />
+            <meta property="og:title" content={data?.seo_tags?.meta_title} />
             <meta property="og:site_name" content='Wonderflow'></meta>
-            <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
-            <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
+            <meta property="og:description" content={data?.seo_tags?.meta_description} />
+            <meta property="og:image" content={data?.section_8_promotional?.hero_image?.url} />
           </Head>
           <Header />
           <Banner  />
