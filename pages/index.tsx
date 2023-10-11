@@ -24,7 +24,7 @@ import { HomeResource } from '../components/home/resources';
 import { Footer } from '../components/footer/footer';
 import { useRouter } from 'next/router';
 import { Header } from '../components/header/header';
-
+import { NextSeo } from 'next-seo';
 export default function Home({ data }: { data: any }) {
   const dispatch = useDispatch()
   const router = useRouter()
@@ -53,7 +53,29 @@ export default function Home({ data }: { data: any }) {
 
   return (
     <>
-      <Head>
+    <NextSeo
+      title="Using More of Config"
+      description="This example uses more of the available config options."
+      canonical="https://www.canonical.ie/"
+      openGraph={{
+        url: 'https://fanciful-youtiao-0aec04.netlify.app/',
+        title: 'Open Graph Title',
+        description: 'Open Graph Description',
+        images: [
+          {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg',
+            width: 800,
+            height: 600,
+            alt: 'Og Image Alt',
+            type: 'image/jpeg',
+          },
+          
+        ],
+       
+      }}
+    
+    />
+      {/* <Head>
 
         <title>{data?.seo_tags?.meta_title}</title>
         <meta name="description" content={data?.seo_tags?.meta_description} />
@@ -62,7 +84,7 @@ export default function Home({ data }: { data: any }) {
         <meta property="og:site_name" content='Wonderflow'></meta>
         <meta property="og:description" content={data?.seo_tags?.meta_description} />
         <meta property="og:image" content='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg' />
-      </Head>
+      </Head> */}
       {!loader ? <>
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
 
