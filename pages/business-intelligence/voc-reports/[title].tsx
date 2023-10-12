@@ -69,7 +69,7 @@ export default function ProductComparison({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getSingleReport("voc_report_entries", context.query.title, context.query.lang)
+    const data = await stackWrapper.getSingleReport("voc_report_entries", context.query.title, `${context.query.lang}`)
     return {
         props: {
             data,

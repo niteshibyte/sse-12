@@ -43,7 +43,7 @@ export default function SalesForcePage({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.salesForceData('banner_page', context.query.title, context.query.lang)
+    const data = await stackWrapper.salesForceData('banner_page', context.query.title, `${context.query.lang}`)
     return {
       props: {
         data,

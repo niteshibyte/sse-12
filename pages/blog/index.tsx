@@ -54,7 +54,7 @@ export default function blog({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-  const data = await stackWrapper.getBlogPage('blog_page', 'bltbe55f1d2d97c3bf1', context.query.lang)
+  const data = await stackWrapper.getBlogPage('blog_page', 'bltbe55f1d2d97c3bf1', `${context.query.lang}`)
   return {
       props: {
           data,

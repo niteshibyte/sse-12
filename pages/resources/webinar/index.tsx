@@ -1,7 +1,7 @@
 
 import '@wonderflow/react-components/core.css';
 import '@wonderflow/themes';
-import { Container, Spinner, useBreakpointsConfig, Stack } from '@wonderflow/react-components';
+import {  Stack } from '@wonderflow/react-components';
 import { Header } from '../../../components/header/header';
 import { WebinarSinglePage } from '../../../components/resources/webinars/webinar-single-page'
 import { Footer } from '../../../components/footer/footer';
@@ -51,7 +51,7 @@ export default function page({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await StackWrapper.gewWebinareData("webinar_page", "blt9334a60c040a264d", context.query.lang)
+    const data = await StackWrapper.gewWebinareData("webinar_page", "blt9334a60c040a264d", `${context.query.lang}`)
     return {
       props: {
         data,

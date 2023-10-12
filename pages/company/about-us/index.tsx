@@ -78,7 +78,7 @@ export default function AboutUs({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getAboutUsPage('about_us_page', 'blt01088a200f6cd6c0', context.query.lang)
+    const data = await stackWrapper.getAboutUsPage('about_us_page', 'blt01088a200f6cd6c0', `${context.query.lang}`)
     return {
         props: {
             data,

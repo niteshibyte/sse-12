@@ -55,7 +55,7 @@ export default function page({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await Stack.gewAnalystData("analyst_report_page", "blt4d17ce3372045bbb", context.query.lang)
+    const data = await Stack.gewAnalystData("analyst_report_page", "blt4d17ce3372045bbb", `${context.query.lang}`)
     return {
       props: {
         data,

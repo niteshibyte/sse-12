@@ -76,7 +76,7 @@ export default function Products({ data }: { data: any }) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await containtStact.getProductData("product_page", "bltc32d48c2f26df4d3", context.query.lang)
+    const data = await containtStact.getProductData("product_page", "bltc32d48c2f26df4d3", `${context.query.lang}`)
     return {
         props: {
             data,

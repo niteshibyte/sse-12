@@ -47,7 +47,7 @@ export default function page({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await Stack.getSuccessStoryData("success_story_page", "bltf8e66d4e3a1a2200", context.query.lang)
+    const data = await Stack.getSuccessStoryData("success_story_page", "bltf8e66d4e3a1a2200", `${context.query.lang}`)
     return {
       props: {
         data,

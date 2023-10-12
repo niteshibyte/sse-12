@@ -50,7 +50,7 @@ export default function page({data}:{data:any}) {
 
 
 export const getServerSideProps = async (context: any) => {
-    const data = await Stack.getWhitePaperData("whitepaper_page", "blt6f4c61851c90a696", context.query.lang)
+    const data = await Stack.getWhitePaperData("whitepaper_page", "blt6f4c61851c90a696", `${context.query.lang}`)
     return {
       props: {
         data,

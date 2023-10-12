@@ -50,7 +50,7 @@ export default function ContactUs({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getContactUs('contact_us_page', 'bltf0e119811e800723', context.query.lang)
+    const data = await stackWrapper.getContactUs('contact_us_page', 'bltf0e119811e800723', `${context.query.lang}`)
     return {
         props: {
             data,

@@ -48,7 +48,7 @@ export default function AdjustPage({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.adjustData('marketing_single_page', `/${context.query.title}`, context.query.lang)
+    const data = await stackWrapper.adjustData('marketing_single_page', `/${context.query.title}`, `${context.query.lang}`)
     return {
       props: {
         data,

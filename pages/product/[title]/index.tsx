@@ -87,7 +87,7 @@ export default function TouchPoint({ data }: { data: any }) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getTouchPointEntry('touchpoint', `/product/${context?.query?.title}`, context.query.lang)
+    const data = await stackWrapper.getTouchPointEntry('touchpoint', `/product/${context?.query?.title}`, `${context.query.lang}`)
     return {
         props: {
             data,

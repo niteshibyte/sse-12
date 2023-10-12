@@ -63,7 +63,7 @@ export default function BusinessINtelligence({data}:{data:any}) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getBIPageData('bi_general_page', 'blt9a9196bfd5a020a8', context.query.lang)
+    const data = await stackWrapper.getBIPageData('bi_general_page', 'blt9a9196bfd5a020a8', `${context.query.lang}`)
     return {
         props: {
             data,
