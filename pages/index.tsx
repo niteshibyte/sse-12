@@ -53,6 +53,27 @@ export default function Home({ data }: { data: any }) {
 
   return (
     <>
+      <head>
+        <title>{homeData?.seo_tags?.meta_title}</title>
+            <meta data-react-helmet="true"  name="description" content={homeData?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" name="keywords" content={homeData?.seo_tags?.keywords} />
+            <meta data-react-helmet="true" property="og:title" content={homeData?.seo_tags?.meta_title} />
+            <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
+            <meta data-react-helmet="true" property="og:description" content={homeData?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" property="og:image" content={homeData?.seo_tags?.image_link?.href} />
+
+        <script>
+          {`
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-PQ3W82L')
+              `}
+
+        </script>
+
+        </head>
       {!loader ? <>
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
           {/* <Head>
