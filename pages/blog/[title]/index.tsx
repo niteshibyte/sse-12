@@ -12,6 +12,8 @@ import { SETBLOGSINGLE } from '../../../reducer/blogsingle';
 import Loader from '../../../components/loader/Loader';
 
 export default function blog({ data, recent }: { data: any, recent: any }) {
+  console.log(data)
+
   const [loader, setLoader] = useState(true)
   const router = useRouter()
   const dispatch = useDispatch()
@@ -28,6 +30,27 @@ export default function blog({ data, recent }: { data: any, recent: any }) {
 
   return (
     <>
+     <head>
+        <title>{data[0][0]?.seo_tags?.meta_title}</title>
+            <meta data-react-helmet="true"  name="description" content={data[0][0]?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" name="keywords" content={data[0][0]?.seo_tags?.keywords} />
+            <meta data-react-helmet="true" property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
+            <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
+            <meta data-react-helmet="true" property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" property="og:image" content={data[0][0]?.image_link?.href} />
+
+        <script>
+          {`
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-PQ3W82L')
+              `}
+
+        </script>
+
+        </head>
 
       {!loader ?
         <Stack as="div">
