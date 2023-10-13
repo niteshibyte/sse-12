@@ -30,6 +30,7 @@ export default function blog({ data, recent }: { data: any, recent: any }) {
 
   return (
     <>
+    
      <head>
         <title>{data[0][0]?.seo_tags?.meta_title}</title>
             <meta data-react-helmet="true"  name="description" content={data[0][0]?.seo_tags?.meta_description} />
@@ -54,15 +55,7 @@ export default function blog({ data, recent }: { data: any, recent: any }) {
 
       {!loader ?
         <Stack as="div">
-          {/* <Head>
-            <title>{blog?.seo_tags?.meta_title}</title>
-            <meta name="description" content={blog?.seo_tags?.meta_description} />
-            <meta name="keywords" content={blog?.seo_tags?.keywords} />
-            <meta property="og:title" content={blog?.seo_tags?.meta_title} />
-            <meta property="og:site_name" content='Wonderflow'></meta>
-            <meta property="og:description" content={blog?.seo_tags?.meta_description} />
-            <meta property="og:image" content={blog?.seo_tags?.image_link?.href} />
-          </Head> */}
+        
           <Stack className="blog--view--page white--theme" rowGap={128}>
             <Header />
             <SingleBlogView data={recent} />

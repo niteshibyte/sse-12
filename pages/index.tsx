@@ -55,13 +55,13 @@ export default function Home({ data }: { data: any }) {
   return (
     <>
       <head>
-        <title>{homeData?.seo_tags?.meta_title}</title>
-            <meta data-react-helmet="true"  name="description" content={homeData?.seo_tags?.meta_description} />
-            <meta data-react-helmet="true" name="keywords" content={homeData?.seo_tags?.keywords} />
-            <meta data-react-helmet="true" property="og:title" content={homeData?.seo_tags?.meta_title} />
+        <title>{data[0][0]?.seo_tags?.meta_title}</title>
+            <meta data-react-helmet="true"  name="description" content={data?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" name="keywords" content={data?.seo_tags?.keywords} />
+            <meta data-react-helmet="true" property="og:title" content={data?.seo_tags?.meta_title} />
             <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
-            <meta data-react-helmet="true" property="og:description" content={homeData?.seo_tags?.meta_description} />
-            <meta data-react-helmet="true" property="og:image" content={homeData?.seo_image?.url} />
+            <meta data-react-helmet="true" property="og:description" content={data?.seo_tags?.meta_description} />
+            <meta data-react-helmet="true" property="og:image" content={data?.seo_tags?.image_link?.href} />
 
         <script>
           {`
