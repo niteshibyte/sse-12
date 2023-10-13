@@ -55,7 +55,7 @@ export default function Home({ data }: { data: any }) {
     <>
       {!loader ? <>
         <Stack as="div" direction='column' rowGap={value.rowGap} className='home--page'>
-          <Head>
+          {/* <Head>
 
             <title>{homeData?.seo_tags?.meta_title}</title>
             <meta name="description" content={homeData?.seo_tags?.meta_description} />
@@ -64,7 +64,7 @@ export default function Home({ data }: { data: any }) {
             <meta property="og:site_name" content='Wonderflow'></meta>
             <meta property="og:description" content={homeData?.seo_tags?.meta_description} />
             <meta property="og:image" content={homeData?.seo_tags?.image_link?.href} />
-          </Head>
+          </Head> */}
           <Header />
           <Banner />
           <PartnerLogos />
