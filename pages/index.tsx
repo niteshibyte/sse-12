@@ -27,6 +27,7 @@ import { Header } from '../components/header/header';
 
 export default function Home({ data }: { data: any }) {
   const dispatch = useDispatch()
+  console.log(data)
   const router = useRouter()
   useEffect(() => {
     document.body.classList.remove("mega--menu--open")
@@ -60,7 +61,7 @@ export default function Home({ data }: { data: any }) {
             <meta data-react-helmet="true" property="og:title" content={homeData?.seo_tags?.meta_title} />
             <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
             <meta data-react-helmet="true" property="og:description" content={homeData?.seo_tags?.meta_description} />
-            <meta data-react-helmet="true" property="og:image" content={homeData?.seo_tags?.image_link?.href} />
+            <meta data-react-helmet="true" property="og:image" content={homeData?.seo_image?.url} />
 
         <script>
           {`
