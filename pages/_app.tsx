@@ -16,8 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return <Provider store={store}>
 
     <html lang="en" data-theme="light">
-    <head>
-        <link rel="stylesheet" href="https://static-production.npmjs.com/styles.cb65339e823461fa6d91.css" />
+        <head>
         <title>next-seo - npm</title>
         <meta data-react-helmet="true" http-equiv="cleartype" content="on" />
         <meta data-react-helmet="true" name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         </script>
 
-        <style data-styled="active" data-styled-version="5.3.5"></style></head>
-     
+        </head>
+      
       {/* <ResponsiveProvider> */}
         <Component {...pageProps} />
       {/* </ResponsiveProvider> */}
