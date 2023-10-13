@@ -37,7 +37,7 @@ export default function blog({ data, recent }: { data: any, recent: any }) {
             <meta data-react-helmet="true" property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
             <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
             <meta data-react-helmet="true" property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
-            <meta data-react-helmet="true" property="og:image" content={data[0][0]?.image_link?.href} />
+            <meta data-react-helmet="true" property="og:image" content={data[0][0]?.seo_tags?.image_link?.href} />
 
         <script>
           {`
