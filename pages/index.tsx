@@ -27,14 +27,14 @@ import { Header } from '../components/header/header';
 
 export default function Home({ data }: { data: any }) {
   const dispatch = useDispatch()
-  console.log(data)
+  
   const router = useRouter()
   useEffect(() => {
     document.body.classList.remove("mega--menu--open")
     dispatch(SETHOMEDATA(data))
   }, [data])
   const [loader, setLoader] = useState(false)
-  const { homeData }: any = useSelector((state) => state)
+  
 
 
   type config = {
@@ -55,7 +55,7 @@ export default function Home({ data }: { data: any }) {
   return (
     <>
       <head>
-        <title>{data[0][0]?.seo_tags?.meta_title}</title>
+        <title>{data?.seo_tags?.meta_title}</title>
             <meta data-react-helmet="true"  name="description" content={data?.seo_tags?.meta_description} />
             <meta data-react-helmet="true" name="keywords" content={data?.seo_tags?.keywords} />
             <meta data-react-helmet="true" property="og:title" content={data?.seo_tags?.meta_title} />
