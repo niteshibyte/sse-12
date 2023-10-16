@@ -6,8 +6,9 @@ import { Container,  Stack, useBreakpointsConfig } from '@wonderflow/react-compo
 import CustomerCentricity from '../../../../components/resources/whitepaper-view/customer-centricity';
 import { BlogResources } from '../../../../components/resources/blog-resources';
 import { RecentWhitePaper } from '../../../../components/resources/whitepapers/recent-whitepaper';
-import { useEffect } from 'react';
+
 import stackWrapper from '../../../../helper/api'
+import Head from 'next/head';
 type config = {
     rowGap: "64" | "128";
 }
@@ -25,6 +26,16 @@ export default function WhitepaperView({data,recentData}:{data:any,recentData:an
     return (
         
             <>
+             <Head>
+
+<title>{data[0][0]?.seo_tags?.meta_title}</title>
+<meta name="description" content={data[0][0]?.seo_tags?.meta_description} />
+<meta name="keywords" content={data[0][0]?.seo_tags?.keywords} />
+<meta property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
+<meta property="og:site_name" content='Wonderflow'></meta>
+<meta property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
+<meta property="og:image" content={data[0][0]?.seo_tags?.image_link?.href} />
+</Head>
                 <Container dimension='full' padding={false} className='white--theme bg--grey white--paper--page'>
                     <Header />
                     <CustomerCentricity whitepaperData={data} />

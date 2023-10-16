@@ -55,13 +55,13 @@ export default function Departments({data}:{data:any}) {
                 <Stack as="div" direction='column' rowGap={value.rowGap} className='white--theme bg--grey industry-page'>
                     <Head>
 
-                        <title>{data?.seo_tags?.meta_title}</title>
-                        <meta name="description" content={data?.seo_tags?.meta_description} />
-                        <meta name="keywords" content={data?.seo_tags?.keywords} />
-                        <meta property="og:title" content={data?.seo_tags?.meta_title} />
+                        <title>{data[0][0]?.seo_tags?.meta_title}</title>
+                        <meta name="description" content={data[0][0]?.seo_tags?.meta_description} />
+                        <meta name="keywords" content={data[0][0]?.seo_tags?.keywords} />
+                        <meta property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
                         <meta property="og:site_name" content='Wonderflow'></meta>
-                        <meta property="og:description" content={data?.seo_tags?.meta_description} />
-                        <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
+                        <meta property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
+                        <meta property="og:image" content={data[0][0]?.seo_tags?.image_link?.href} />
                     </Head>
                     <Header />
                     <DepartmentTopSection />

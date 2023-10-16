@@ -7,6 +7,7 @@ import { WebinarSingleViewBanner } from '../../../../components/resources/webina
 import { BlogResources } from '../../../../components/resources/blog-resources';
 import stackWrapper from '../../../../helper/api'
 import { RecentWebinar } from "../../../../components/resources/webinars/recent-webinar";
+import Head from 'next/head';
 type config = {
     vPadding: "64" | "128",
 }
@@ -20,6 +21,16 @@ export default function WebinarView({ data, recentData }: { data: any, recentDat
 
     return (
         <>
+            <Head>
+
+                <title>{data[0][0]?.seo_tags?.meta_title}</title>
+                <meta name="description" content={data[0][0]?.seo_tags?.meta_description} />
+                <meta name="keywords" content={data[0][0]?.seo_tags?.keywords} />
+                <meta property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
+                <meta property="og:site_name" content='Wonderflow'></meta>
+                <meta property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
+                <meta property="og:image" content={data[0][0]?.seo_tags?.image_link?.href} />
+            </Head>
             <Stack className='dark--theme webinar--single--content--page'>
                 <Header />
                 <WebinarSingleViewBanner webinar={data} />

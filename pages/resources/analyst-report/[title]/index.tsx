@@ -46,19 +46,19 @@ export default function AnalystReport({data}:{data:any}) {
     })
 
     return (
-        <>
+        <><Head>
+        <title>{analyst?.seo_tags?.meta_title}</title>
+        <meta name="description" content={analyst?.seo_tags?.meta_description} />
+        <meta name="keywords" content={analyst?.seo_tags?.keywords} />
+        <meta property="og:title" content={analyst?.seo_tags?.meta_title} />
+        <meta property="og:site_name" content='Wonderflow'></meta>
+        <meta property="og:description" content={analyst?.seo_tags?.meta_description} />
+        <meta property="og:image" content={analyst?.seo_tags?.image_link?.href} />
+    </Head>
             <>
 
                 {!loader ? <Stack as="div" direction='column' rowGap={value.rowGap} className='analyst-report-page'>
-                <Head>
-                    <title>{analyst?.seo_tags?.meta_title}</title>
-                    <meta name="description" content={analyst?.seo_tags?.meta_description} />
-                    <meta name="keywords" content={analyst?.seo_tags?.keywords} />
-                    <meta property="og:title" content={analyst?.seo_tags?.meta_title} />
-                    <meta property="og:site_name" content='Wonderflow'></meta>
-                    <meta property="og:description" content={analyst?.seo_tags?.meta_description} />
-                    <meta property="og:image" content={analyst?.seo_tags?.image_link?.href} />
-                </Head>
+                
                     <Header />
                     <TopBanner />
                     <ReportInfo />

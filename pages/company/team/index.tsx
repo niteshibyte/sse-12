@@ -19,6 +19,7 @@ type config = {
 }
 
 export default function Team({ data }: { data: any }) {
+
     const dispatch = useDispatch()
     const [loader, setLoader] = useState(true)
     useEffect(() => {
@@ -65,7 +66,7 @@ export default function Team({ data }: { data: any }) {
     )
 }
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getTeam('team_page', 'blt5164d5f7594ac24b', context.query.lang)
+    const data = await stackWrapper.getTeam('team_page', 'blt5164d5f7594ac24b', `${context.query.lang}`)
     return {
         props: {
             data,

@@ -33,12 +33,22 @@ export default function BecomePartner({data}:{data:any}) {
                 <Head>
 
                     <title>{data?.seo_tags?.meta_title}</title>
-                    <meta name="description" content={data?.seo_tags?.meta_description} />
-                    <meta name="keywords" content={data?.seo_tags?.keywords} />
-                    <meta property="og:title" content={data?.seo_tags?.meta_title} />
-                    <meta property="og:site_name" content='Wonderflow'></meta>
-                    <meta property="og:description" content={data?.seo_tags?.meta_description} />
-                    <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
+                    <meta data-react-helmet="true" name="description" content={data?.seo_tags?.meta_description} />
+                    <meta data-react-helmet="true" name="keywords" content={data?.seo_tags?.keywords} />
+                    <meta data-react-helmet="true" property="og:title" content={data?.seo_tags?.meta_title} />
+                    <meta data-react-helmet="true" property="og:site_name" content='Wonderflow'></meta>
+                    <meta data-react-helmet="true" property="og:description" content={data?.seo_tags?.meta_description} />
+                    <meta data-react-helmet="true" property="og:image" content={data?.seo_tags?.image_link?.href} />
+                    <script>
+                        {`
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-PQ3W82L')
+              `}
+
+                    </script>
                 </Head>
                 <Container dimension='full' padding={false} className='white--theme bg--grey become-partner-page'>
                     <Header />

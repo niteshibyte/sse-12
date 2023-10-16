@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import { SETSUCCESSSTORYSINGLE } from '../../../../reducer/successStorySingle';
 import Loader from '../../../../components/loader/Loader';
 import stackWrapper from '../../../../helper/api'
+import Head from 'next/head';
 type config = {
     rowGap: "64" | "128";
 }
@@ -44,6 +45,16 @@ export default function SuccessStory({ data, recentData }: { data: any, recentDa
 
     return (
         <>
+        <Head>
+
+<title>{data[0][0]?.seo_tags?.meta_title}</title>
+<meta name="description" content={data[0][0]?.seo_tags?.meta_description} />
+<meta name="keywords" content={data[0][0]?.seo_tags?.keywords} />
+<meta property="og:title" content={data[0][0]?.seo_tags?.meta_title} />
+<meta property="og:site_name" content='Wonderflow'></meta>
+<meta property="og:description" content={data[0][0]?.seo_tags?.meta_description} />
+<meta property="og:image" content={data[0][0]?.seo_tags?.image_link?.href} />
+</Head>
             {!loader ? <>
                 <Stack direction='column' rowGap={128} className='white--theme success-story-page'>
                     <Header />

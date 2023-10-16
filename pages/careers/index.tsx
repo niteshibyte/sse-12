@@ -22,6 +22,7 @@ type config = {
 }
 
 export default function Careers({ data }: { data: any }) {
+
     const [loader, setLoader] = useState(true)
 
     const dispatch = useDispatch()
@@ -71,7 +72,7 @@ export default function Careers({ data }: { data: any }) {
 }
 
 export const getServerSideProps = async (context: any) => {
-    const data = await stackWrapper.getCareer('career_page', 'bltf169b70be5ed3027', context.query.lang)
+    const data = await stackWrapper.getCareer('career_page', 'bltf169b70be5ed3027', `${context.query.lang}`)
     return {
         props: {
             data,

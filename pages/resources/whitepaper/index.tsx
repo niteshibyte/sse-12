@@ -12,7 +12,7 @@ import { WhitePaperSinglePage } from '../../../components/resources/whitepapers/
 import Head from 'next/head';
 import Loader from '../../../components/loader/Loader';
 
-export default function page({data}:{data:any}) {
+export default function page({ data }: { data: any }) {
 
     const [loader, setLoader] = useState(true)
     const dispatch = useDispatch();
@@ -22,28 +22,29 @@ export default function page({data}:{data:any}) {
         setLoader(false)
 
     }, [data])
-    
+
 
     return (
         <>
-            {!loader ? <>
-                <Head>
+            <Head>
 
-                    <title>{data?.seo_tags?.meta_title}</title>
-                    <meta name="description" content={data?.seo_tags?.meta_description} />
-                    <meta name="keywords" content={data?.seo_tags?.keywords} />
-                    <meta property="og:title" content={data?.seo_tags?.meta_title} />
-                    <meta property="og:site_name" content='Wonderflow'></meta>
-                    <meta property="og:description" content={data?.seo_tags?.meta_description} />
-                    <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
-                </Head>
+                <title>{data?.seo_tags?.meta_title}</title>
+                <meta name="description" content={data?.seo_tags?.meta_description} />
+                <meta name="keywords" content={data?.seo_tags?.keywords} />
+                <meta property="og:title" content={data?.seo_tags?.meta_title} />
+                <meta property="og:site_name" content='Wonderflow'></meta>
+                <meta property="og:description" content={data?.seo_tags?.meta_description} />
+                <meta property="og:image" content={data?.seo_tags?.image_link?.href} />
+            </Head>
+            {!loader ? <>
+
                 <Container className='dark--theme resouces--content--page site--banner--image white-paper-page' padding={false}>
                     <Header />
                     <WhitePaperBannerContent />
                 </Container>
                 <WhitePaperSinglePage />
                 <Footer />
-            </> :<Loader height='100vh' width='100vw' />}
+            </> : <Loader height='100vh' width='100vw' />}
         </>
     )
 }
@@ -52,8 +53,8 @@ export default function page({data}:{data:any}) {
 export const getServerSideProps = async (context: any) => {
     const data = await Stack.getWhitePaperData("whitepaper_page", "blt6f4c61851c90a696", `${context.query.lang}`)
     return {
-      props: {
-        data,
-      },
+        props: {
+            data,
+        },
     };
-  }
+}
