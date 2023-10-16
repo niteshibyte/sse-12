@@ -12,7 +12,6 @@ import { SETBLOGSINGLE } from '../../../reducer/blogsingle';
 import Loader from '../../../components/loader/Loader';
 
 export default function blog({ data, recent }: { data: any, recent: any }) {
-  console.log(data)
 
   const [loader, setLoader] = useState(true)
   const router = useRouter()
